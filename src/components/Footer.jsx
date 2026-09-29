@@ -54,9 +54,10 @@ export default function Footer() {
             <h4 className="footer-nav-title">Sitemap</h4>
             <a href="#home" className="footer-nav-link">Overview</a>
             <a href="#projects" className="footer-nav-link">Featured Projects</a>
-            <a href="#skills" className="footer-nav-link">Architecture & Tech</a>
+            <a href="#pipeline" className="footer-nav-link">CI/CD Pipeline Simulator</a>
+            <a href="#skills" className="footer-nav-link">DevOps & Cloud Stack</a>
+            <a href="#certifications" className="footer-nav-link">Verified Certifications</a>
             <a href="#experience" className="footer-nav-link">Career Milestones</a>
-            <a href="#testimonials" className="footer-nav-link">Endorsements</a>
             <a href="#contact" className="footer-nav-link">Get In Touch</a>
           </div>
 

@@ -249,12 +249,169 @@ export const testimonialsData = [
 ];
 
 export const terminalCommands = {
-  help: "Available commands: 'about', 'skills', 'projects', 'status', 'architecture', 'contact', 'clear', 'sudo hire'",
+  help: "Available commands: 'about', 'skills', 'projects', 'pipeline', 'certs', 'status', 'architecture', 'contact', 'clear', 'sudo hire'",
   about: "Girish Sharma - Associate Cloud & DevOps Engineer specializing in AWS, Docker, Kubernetes, Terraform & CI/CD automation.",
   skills: "Core: AWS, Docker, Kubernetes, Terraform, GitHub Actions, Jenkins, Linux, Bash, Prometheus, Grafana, Python.",
   projects: "1. GitOps Kubernetes Fleet (ArgoCD & EKS)\n2. AWS 3-Tier Architecture (Terraform)\n3. Enterprise DevSecOps Pipeline (Trivy & ECS)\n4. Cloud Telemetry Hub (Prometheus & Grafana)",
+  pipeline: "Interactive CI/CD pipeline active below Projects section. Run simulated deployment to observe automated verification.",
+  certs: "1. AWS Certified Cloud Practitioner\n2. HashiCorp Certified: Terraform Associate\n3. Docker Certified Associate\n4. Linux Foundation SysAdmin",
   contact: "Email: girish.sharma.dev@gmail.com | LinkedIn: /in/girish-sharma-dev | GitHub: @girish-sharma",
   status: "🟢 DevOps Status: ALL CI/CD RUNNERS ONLINE | Cluster Health: 99.9% | Actively interviewing for Cloud/DevOps roles.",
   architecture: "Type 'architecture' or switch to the stack.json tab to view declarative cloud infrastructure details.",
   "sudo hire": "🎉 Sudo permission granted! Initializing fast-track interview protocol. Redirecting to contact..."
 };
+
+export const recruiterQuickFacts = {
+  noticePeriod: "Immediate (0 Days)",
+  rolePreference: "Associate DevOps / Cloud Engineer / SRE",
+  locationPreference: "Bangalore / Remote / Open to Relocate",
+  education: "B.Tech Computer Science (2024)",
+  topTechnologies: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "Prometheus"],
+  screeningLink: "https://calendar.google.com",
+  verifiedResume: "Girish_Sharma_DevOps_Resume.txt"
+};
+
+export const certificationsData = [
+  {
+    id: "aws-ccp",
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services (AWS)",
+    issueDate: "2024",
+    credentialId: "AWS-CCP-84920412",
+    verifyUrl: "https://aws.amazon.com/verification",
+    badgeColor: "#ff9900",
+    badgeBg: "rgba(255, 153, 0, 0.12)",
+    iconName: "aws",
+    skills: ["Cloud Architecture", "AWS Global VPC", "IAM Security Policies", "Cost Optimization"]
+  },
+  {
+    id: "hashicorp-terraform",
+    title: "HashiCorp Certified: Terraform Associate",
+    issuer: "HashiCorp",
+    issueDate: "2024",
+    credentialId: "HASHI-TA-9938104",
+    verifyUrl: "https://www.credly.com",
+    badgeColor: "#844fba",
+    badgeBg: "rgba(132, 79, 186, 0.12)",
+    iconName: "terraform",
+    skills: ["Infrastructure as Code", "Terraform State Locking", "Module Architecture", "Multi-Cloud Provisioning"]
+  },
+  {
+    id: "docker-foundations",
+    title: "Docker Certified Associate / Container Pro",
+    issuer: "Docker Inc.",
+    issueDate: "2023",
+    credentialId: "DCKR-FDN-551029",
+    verifyUrl: "https://www.credly.com",
+    badgeColor: "#0284c7",
+    badgeBg: "rgba(2, 132, 199, 0.12)",
+    iconName: "docker",
+    skills: ["Multi-Stage Builds", "Docker Compose", "Image Footprint Optimization", "Container Security"]
+  },
+  {
+    id: "linux-admin",
+    title: "Linux Foundation: SysAdmin & Shell Automation",
+    issuer: "The Linux Foundation",
+    issueDate: "2023",
+    credentialId: "LF-SYS-332901",
+    verifyUrl: "https://www.linuxfoundation.org",
+    badgeColor: "#10b981",
+    badgeBg: "rgba(16, 185, 129, 0.12)",
+    iconName: "linux",
+    skills: ["Systemd & Daemons", "Bash Shell Scripting", "Networking & IPTables", "Linux Security Hardening"]
+  }
+];
+
+export const pipelineSimulatorStages = [
+  {
+    id: "source",
+    name: "Source & Checkout",
+    icon: "GitBranch",
+    tool: "Git / GitHub Webhook",
+    command: "git checkout -b release/v2.4.0 && git verify-commit",
+    duration: "1.2s",
+    logs: [
+      "[INFO] Webhook received from repository: girish-sharma/cloud-native-app",
+      "[INFO] Triggered by commit a8f492b: 'feat(k8s): update Helm values for canary'",
+      "[INFO] Cloned branch: main into ephemeral runner environment in 1.2s",
+      "[SUCCESS] Git HEAD verified and verified GPG signature OK."
+    ]
+  },
+  {
+    id: "sast",
+    name: "Static Analysis & SAST",
+    icon: "ShieldCheck",
+    tool: "SonarQube & Trivy",
+    command: "shellcheck deploy.sh && trivy fs --severity HIGH,CRITICAL .",
+    duration: "2.8s",
+    logs: [
+      "[RUN] Executing ShellCheck on 14 infrastructure automation scripts...",
+      "[INFO] ShellCheck: 0 errors, 0 warnings found.",
+      "[RUN] Scanning codebase dependencies for CVE vulnerabilities with Trivy...",
+      "[INFO] Trivy DB updated: 2026-09-28. Scanned 428 packages.",
+      "[SUCCESS] 0 Critical, 0 High vulnerabilities detected. Gate status: PASSED."
+    ]
+  },
+  {
+    id: "build",
+    name: "Docker Build & Push",
+    icon: "Package",
+    tool: "Docker Buildx & AWS ECR",
+    command: "docker buildx build --cache-from=type=gha -t app:v2.4.0 --push",
+    duration: "4.1s",
+    logs: [
+      "[RUN] Initializing Docker Buildx multi-architecture builder (linux/amd64)...",
+      "[STAGE 1/2] FROM node:20-alpine AS builder -> Using cached layers (0.3s)",
+      "[STAGE 2/2] FROM alpine runtime -> Final production image created",
+      "[INFO] Docker image compressed: 48.2 MB (62% reduction via multi-stage)",
+      "[RUN] Tagging and pushing image to AWS ECR: 928374918234.dkr.ecr.us-east-1.amazonaws.com",
+      "[SUCCESS] Digest: sha256:4b91f948cba099... Image push verified."
+    ]
+  },
+  {
+    id: "iac",
+    name: "IaC Terraform Plan",
+    icon: "Server",
+    tool: "Terraform & AWS",
+    command: "terraform init -backend=s3 && terraform plan -out=tfplan",
+    duration: "3.4s",
+    logs: [
+      "[RUN] terraform init: Initializing S3 remote state and DynamoDB lock table...",
+      "[INFO] AWS provider v5.40 loaded.",
+      "[RUN] Refreshing AWS EKS and VPC resources state...",
+      "[PLAN] 0 to add, 1 to change (EKS pod replica count), 0 to destroy.",
+      "[SUCCESS] Terraform validation passed. No drift detected against cloud resources."
+    ]
+  },
+  {
+    id: "deploy",
+    name: "GitOps K8s Rollout",
+    icon: "Cloud",
+    tool: "ArgoCD & Helm (EKS)",
+    command: "argocd app sync production-cluster --prune",
+    duration: "3.9s",
+    logs: [
+      "[RUN] ArgoCD detected new manifest commit in git repository...",
+      "[SYNC] Initiating canary deployment on AWS EKS cluster namespace 'production'",
+      "[K8S] Deploying replica set v2.4.0 (10% traffic canary)...",
+      "[K8S] Health check probes 200 OK. Promoting to 100% traffic across 6 worker nodes.",
+      "[SUCCESS] Zero-downtime rolling update complete. Replica set healthy."
+    ]
+  },
+  {
+    id: "monitor",
+    name: "Telemetry & SLO Check",
+    icon: "Activity",
+    tool: "Prometheus & Grafana",
+    command: "curl -s http://prometheus:9090/api/v1/query?query=http_5xx_rate",
+    duration: "1.8s",
+    logs: [
+      "[RUN] Ingress controller health probe dispatched to https://app.production.internal",
+      "[METRIC] HTTP p99 Latency: 14.2ms (Target: < 50ms) -> PASSED",
+      "[METRIC] HTTP 5xx error rate: 0.00% across 5,000 synthetic requests -> PASSED",
+      "[ALERTMANAGER] Status: 0 active firing alerts.",
+      "[NOTIFY] Dispatched deployment success payload to #devops-deployments Slack channel.",
+      "[SUCCESS] Pipeline execution finished successfully in 17.2s total."
+    ]
+  }
+];

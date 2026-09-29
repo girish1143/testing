@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Code2, Menu, X, Sparkles } from 'lucide-react';
+import { Sun, Moon, Code2, Menu, X, Sparkles, Command } from 'lucide-react';
 import './Navbar.css';
 
-export default function Navbar({ theme, onToggleTheme }) {
+export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -11,7 +11,7 @@ export default function Navbar({ theme, onToggleTheme }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'projects', 'skills', 'experience', 'testimonials', 'contact'];
+      const sections = ['home', 'projects', 'pipeline', 'skills', 'certifications', 'experience', 'testimonials', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -34,9 +34,10 @@ export default function Navbar({ theme, onToggleTheme }) {
   const navItems = [
     { label: 'Overview', href: '#home', id: 'home' },
     { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'CI/CD Pipeline', href: '#pipeline', id: 'pipeline' },
     { label: 'Tech Stack', href: '#skills', id: 'skills' },
+    { label: 'Certifications', href: '#certifications', id: 'certifications' },
     { label: 'Experience', href: '#experience', id: 'experience' },
-    { label: 'Endorsements', href: '#testimonials', id: 'testimonials' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -69,6 +70,16 @@ export default function Navbar({ theme, onToggleTheme }) {
 
         {/* Action buttons */}
         <div className="nav-actions">
+          <button
+            onClick={onOpenPalette}
+            className="command-palette-trigger-btn"
+            title="Open Command Palette (Ctrl+K)"
+            aria-label="Open Command Palette"
+          >
+            <Command size={14} />
+            <span className="cmd-kbd-badge">Ctrl K</span>
+          </button>
+
           <button
             onClick={onToggleTheme}
             className="theme-toggle-btn"

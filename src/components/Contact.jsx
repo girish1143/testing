@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { personalInfo } from '../data/portfolioData';
-import { Mail, MapPin, Send, CheckCircle2, Clock, Loader2, MessageSquare } from 'lucide-react';
+import { personalInfo, recruiterQuickFacts } from '../data/portfolioData';
+import { Mail, MapPin, Send, CheckCircle2, Clock, Loader2, MessageSquare, Calendar, Download, Zap } from 'lucide-react';
 import { Github, Linkedin, Twitter } from './SocialIcons';
 import './Contact.css';
 
@@ -94,6 +94,57 @@ export default function Contact() {
                   <span className="contact-card-label">Response Latency</span>
                   <span className="contact-card-val">Guaranteed within 24 Hours</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Recruiter Fast-Track Snapshot */}
+            <div className="recruiter-fasttrack-card">
+              <div className="fasttrack-header">
+                <div className="fasttrack-title">
+                  <Zap size={16} style={{ color: 'var(--accent-amber)' }} />
+                  <span>Recruiter Fast-Track Snapshot</span>
+                </div>
+                <span className="fasttrack-badge">Ready to Join</span>
+              </div>
+
+              <div className="fasttrack-details">
+                <div className="fasttrack-item">
+                  <span className="ft-label">Notice Period:</span>
+                  <span className="ft-val highlight-green">{recruiterQuickFacts.noticePeriod}</span>
+                </div>
+                <div className="fasttrack-item">
+                  <span className="ft-label">Target Roles:</span>
+                  <span className="ft-val">{recruiterQuickFacts.rolePreference}</span>
+                </div>
+                <div className="fasttrack-item">
+                  <span className="ft-label">Work Mode:</span>
+                  <span className="ft-val">{recruiterQuickFacts.locationPreference}</span>
+                </div>
+                <div className="fasttrack-item">
+                  <span className="ft-label">Education:</span>
+                  <span className="ft-val">{recruiterQuickFacts.education}</span>
+                </div>
+              </div>
+
+              <div className="fasttrack-actions">
+                <a
+                  href="#experience"
+                  onClick={() => document.getElementById('download-resume-btn')?.click()}
+                  className="btn btn-secondary btn-sm"
+                  style={{ flex: 1, justifyContent: 'center' }}
+                >
+                  <Download size={14} />
+                  <span>Verified CV</span>
+                </a>
+
+                <a
+                  href={`mailto:${personalInfo.email}?subject=Interview%20Invitation%20-%20DevOps%20Role&body=Hi%20Girish,%20we%20reviewed%20your%20DevOps%20portfolio%20and%20would%20love%20to%20connect%20for%20an%20interview.`}
+                  className="btn btn-primary btn-sm"
+                  style={{ flex: 1, justifyContent: 'center' }}
+                >
+                  <Calendar size={14} />
+                  <span>Invite to Interview</span>
+                </a>
               </div>
             </div>
 
