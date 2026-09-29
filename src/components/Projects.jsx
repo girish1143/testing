@@ -8,7 +8,7 @@ export default function Projects({ onSelectProject }) {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', 'AI & Cloud', 'Full Stack', 'Frontend / UI'];
+  const categories = ['All', 'CI/CD & GitOps', 'Kubernetes & Docker', 'Cloud & IaC', 'Monitoring'];
 
   const filteredProjects = useMemo(() => {
     return projectsData.filter((project) => {
@@ -34,13 +34,13 @@ export default function Projects({ onSelectProject }) {
         <div className="section-header">
           <span className="section-tag">
             <Sparkles size={14} />
-            Featured Work & Architecture
+            Featured DevOps & Cloud Repos
           </span>
           <h2 className="section-title">
-            Production-Grade <span className="gradient-text">Engineering Feats</span>
+            Production-Grade <span className="gradient-text">DevOps Architectures</span>
           </h2>
           <p className="section-description">
-            Explore distributed cloud platforms, real-time reactive applications, and AI agent frameworks built with focus on sub-millisecond latencies and high availability.
+            Explore automated CI/CD pipelines, Kubernetes GitOps deployments, Infrastructure as Code modules, and observability hubs built for zero-downtime operations.
           </p>
         </div>
 

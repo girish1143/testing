@@ -1,258 +1,260 @@
 export const personalInfo = {
   name: "Girish Sharma",
-  title: "Senior Full Stack & AI Systems Engineer",
-  subtitle: "Architecting high-performance web applications, resilient distributed systems, and modern AI-driven user experiences.",
-  location: "Bangalore, India (Remote Available)",
-  availability: "Available for Q3/Q4 Projects & Advisory",
-  bio: "Over 6 years of experience building mission-critical SaaS platforms, reactive user interfaces, and cloud-native backends. Passionate about design precision, sub-100ms latency, and developer experience.",
+  title: "Associate Cloud & DevOps Engineer",
+  subtitle: "Automating CI/CD pipelines, orchestrating Docker & Kubernetes workloads, and provisioning resilient cloud infrastructure with Terraform & AWS.",
+  location: "Bangalore, India (Open to Relocation / Remote)",
+  availability: "Actively Seeking DevOps & Cloud Roles",
+  bio: "Passionate Cloud & DevOps Engineer specializing in end-to-end CI/CD automation, Docker containerization, and Infrastructure as Code using Terraform and AWS. Committed to eliminating deployment bottlenecks, enforcing security best practices, and architecting observable, zero-downtime cloud infrastructure.",
   email: "girish.sharma.dev@gmail.com",
   github: "https://github.com/girish-sharma",
   linkedin: "https://linkedin.com/in/girish-sharma-dev",
   twitter: "https://twitter.com/girish_codes",
-  yearsExperience: "6+",
-  projectsCount: "45+",
-  satisfiedClients: "99.8%",
-  codeContributions: "1,850+"
+  yearsExperience: "Fresher",
+  projectsCount: "12+",
+  satisfiedClients: "100%",
+  codeContributions: "650+"
 };
 
 export const metrics = [
-  { label: "Years Experience", value: "6+", change: "Full Stack & Cloud" },
-  { label: "Production Apps", value: "45+", change: "Fintech, SaaS & AI" },
-  { label: "Global Users Served", value: "1.4M+", change: "Across 14 countries" },
-  { label: "Average Lighthouse", value: "99/100", change: "Performance & SEO" }
+  { label: "Cloud & DevOps", value: "Hands-on", change: "AWS, Docker, K8s, IaC" },
+  { label: "DevOps Projects", value: "12+", change: "CI/CD, IaC & K8s Repos" },
+  { label: "Automated Deployments", value: "250+", change: "Zero Pipeline Downtime" },
+  { label: "Infrastructure Uptime", value: "99.9%", change: "Prometheus & Grafana" }
 ];
 
 export const skillsData = [
   {
-    category: "Frontend Architecture",
-    description: "Creating accessible, reactive, and fluid web experiences",
+    category: "Cloud & Infrastructure",
+    description: "Architecting secure, cost-optimized, and repeatable cloud foundations",
     skills: [
-      { name: "React 19 / Next.js", level: 96, highlight: true },
-      { name: "TypeScript", level: 94, highlight: true },
-      { name: "Tailwind CSS / Vanilla CSS", level: 95 },
-      { name: "State Machines / Redux / Zustand", level: 90 },
-      { name: "WebSockets / Realtime UI", level: 88 },
-      { name: "Web Performance & Core Vitals", level: 92 }
+      { name: "Amazon Web Services (AWS)", level: 90, highlight: true },
+      { name: "Terraform (IaC)", level: 88, highlight: true },
+      { name: "Linux Administration & Bash", level: 92, highlight: true },
+      { name: "VPC, Subnets & Cloud Networking", level: 86 },
+      { name: "IAM & Cloud Security Policies", level: 88 },
+      { name: "Nginx Reverse Proxy & SSL", level: 85 }
     ]
   },
   {
-    category: "Backend & Systems",
-    description: "Designing scalable microservices, low-latency APIs & data pipelines",
+    category: "Containers & Orchestration",
+    description: "Packaging microservices and managing declarative cluster workloads",
     skills: [
-      { name: "Node.js / Express / Fastify", level: 95, highlight: true },
-      { name: "Python / FastAPI", level: 89 },
-      { name: "PostgreSQL & Prisma / Drizzle", level: 92, highlight: true },
-      { name: "Redis & Distributed Caching", level: 90 },
-      { name: "REST & GraphQL APIs", level: 94 },
-      { name: "Kafka & Event Streams", level: 82 }
+      { name: "Docker & Multi-Stage Builds", level: 95, highlight: true },
+      { name: "Kubernetes (K8s) & Minikube/EKS", level: 85, highlight: true },
+      { name: "Docker Compose", level: 92 },
+      { name: "Helm Package Manager", level: 82 },
+      { name: "Pod Autoscaling (HPA) & Ingress", level: 80 },
+      { name: "Microservice Container Networking", level: 84 }
     ]
   },
   {
-    category: "Cloud & DevOps",
-    description: "Automated deployment, infrastructure as code & observability",
+    category: "CI/CD & Automation",
+    description: "Building automated test, security scan, and deployment delivery pipelines",
     skills: [
-      { name: "Docker & Containerization", level: 90, highlight: true },
-      { name: "AWS (S3, ECS, Lambda, RDS)", level: 87 },
-      { name: "CI/CD (GitHub Actions)", level: 92 },
-      { name: "Kubernetes & Helm", level: 80 },
-      { name: "Vercel / Cloudflare Edge", level: 95, highlight: true },
-      { name: "Monitoring & Datadog / Sentry", level: 85 }
+      { name: "GitHub Actions Workflows", level: 94, highlight: true },
+      { name: "Jenkins Pipeline (Declarative/Scripted)", level: 84, highlight: true },
+      { name: "GitOps with ArgoCD", level: 82 },
+      { name: "Git Version Control & Branching", level: 95 },
+      { name: "SonarQube & Trivy Security Scans", level: 82 },
+      { name: "Artifact Registries (DockerHub, ECR)", level: 88 }
     ]
   },
   {
-    category: "AI & Intelligent Tooling",
-    description: "Harnessing LLMs, semantic search, and agentic workflows",
+    category: "Observability & Scripting",
+    description: "Real-time system telemetry, proactive log aggregation, and task automation",
     skills: [
-      { name: "OpenAI & Anthropic APIs", level: 92, highlight: true },
-      { name: "LangChain / LlamaIndex", level: 86 },
-      { name: "Vector Databases (Pinecone/pgvector)", level: 88 },
-      { name: "Agentic Tool Use & Automation", level: 90, highlight: true },
-      { name: "Local Models (Ollama, vLLM)", level: 84 },
-      { name: "RAG Pipeline Engineering", level: 88 }
+      { name: "Prometheus & Node Exporter", level: 88, highlight: true },
+      { name: "Grafana Dashboards & Metrics", level: 90, highlight: true },
+      { name: "Python for DevOps Automation", level: 85, highlight: true },
+      { name: "Shell Scripting (Bash / Zsh)", level: 92 },
+      { name: "AWS CloudWatch & Alarms", level: 84 },
+      { name: "Alertmanager & Slack Webhooks", level: 86 }
     ]
   }
 ];
 
 export const projectsData = [
   {
-    id: "nexus-cloud",
-    title: "NexusCloud AI Engine",
-    tagline: "Autonomous Agent Workflow Orchestrator & Observability Suite",
-    category: "AI & Cloud",
+    id: "k8s-gitops-cluster",
+    title: "GitOps Kubernetes Fleet",
+    tagline: "Declarative Microservices Delivery via ArgoCD, Helm & AWS EKS",
+    category: "Kubernetes & Docker",
     featured: true,
-    bannerGradient: "linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%)",
-    metrics: "+340% throughput | <45ms execution latency",
-    description: "A distributed orchestration platform for executing multi-agent LLM pipelines with real-time streaming traces, token usage guardrails, and visual state debugging.",
-    detailedDescription: "NexusCloud gives enterprise development teams full visibility and deterministic control over autonomous agent swarms. Featuring custom Redis event dispatching, server-sent events for streaming DAG visualizations, and automatic fallback routers.",
-    techStack: ["React 19", "TypeScript", "FastAPI", "Redis Streams", "pgvector", "Docker"],
-    stars: 428,
-    forks: 67,
-    liveUrl: "https://nexuscloud-demo.dev",
-    githubUrl: "https://github.com/girish-sharma/nexus-cloud",
+    bannerGradient: "linear-gradient(135deg, #0284c7 0%, #2563eb 100%)",
+    metrics: "Zero-Downtime Rollouts | 100% Declarative Git State",
+    description: "Production-ready Kubernetes cluster setup managed strictly through GitOps principles. Features automatic sync triggers with ArgoCD, Helm charts for microservice deployments, and ingress routing.",
+    detailedDescription: "Designed to eliminate manual kubectl interventions in production. Integrated ArgoCD detects Git repository commits and automatically synchronizes application manifests to AWS EKS. Includes Horizontal Pod Autoscalers (HPA), readiness/liveness probes, and cert-manager automated TLS certificates.",
+    techStack: ["Kubernetes", "ArgoCD", "Helm", "Docker", "AWS EKS", "GitHub Actions"],
+    stars: 312,
+    forks: 48,
+    liveUrl: "https://github.com/girish-sharma/k8s-gitops-fleet",
+    githubUrl: "https://github.com/girish-sharma/k8s-gitops-fleet",
     highlights: [
-      "Streamed DAG execution graph rendering 60fps",
-      "Dynamic prompt caching reducing LLM costs by 48%",
-      "Granular RBAC and SOC2 audit log compliance"
+      "Automated canary & rolling updates with zero downtime",
+      "Declarative Helm charts managing multi-environment configs (dev/staging/prod)",
+      "Strict RBAC policies, NetworkPolicies, and resource quotas per namespace"
     ]
   },
   {
-    id: "strata-hotel",
-    title: "Strata Hospitality Suite",
-    tagline: "Ultra-Fast Realtime Hotel Booking & Concierge Engine",
-    category: "Full Stack",
+    id: "terraform-aws-architecture",
+    title: "AWS 3-Tier Terraform Engine",
+    tagline: "Automated Multi-AZ Infrastructure as Code with Remote State Locking",
+    category: "Cloud & IaC",
     featured: true,
-    bannerGradient: "linear-gradient(135deg, #0ea5e9 0%, #10b981 100%)",
-    metrics: "99.99% booking sync | 120ms average response",
-    description: "Full-scale property management & guest reservation portal with sub-second live room inventory locks, Stripe payment intents, and automated guest notifications.",
-    detailedDescription: "Designed for boutique hotels and luxury resorts. Eliminates overbooking hazards via distributed transactional locks in Postgres, paired with a fluid Next.js frontend with mobile-first gesture navigation.",
-    techStack: ["React", "Node.js", "PostgreSQL", "Stripe API", "WebSockets", "Tailwind CSS"],
-    stars: 215,
-    forks: 34,
-    liveUrl: "https://strata-hotel.dev",
-    githubUrl: "https://github.com/girish-sharma/strata-hotel",
+    bannerGradient: "linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%)",
+    metrics: "100% Automated Provisioning | Multi-AZ High Availability",
+    description: "Complete modular Terraform codebase that provisions a highly available 3-tier AWS architecture with VPC, public/private subnets, NAT Gateways, ALB, Auto Scaling Groups, and RDS PostgreSQL.",
+    detailedDescription: "Employs clean Terraform modular architecture with S3 remote state storage and DynamoDB state locking to prevent concurrent deployment collisions. Incorporates AWS IAM least-privilege security roles and security groups with zero hardcoded credentials.",
+    techStack: ["Terraform", "AWS VPC", "EC2 Auto Scaling", "RDS PostgreSQL", "S3 & DynamoDB", "Bash"],
+    stars: 245,
+    forks: 39,
+    liveUrl: "https://github.com/girish-sharma/terraform-aws-3tier",
+    githubUrl: "https://github.com/girish-sharma/terraform-aws-3tier",
     highlights: [
-      "Pessimistic concurrency locking preventing double bookings",
-      "Interactive 3D room preview with floor plan selector",
-      "Integrated multi-currency checkout & automated invoice generation"
+      "Modular design reusable across multiple AWS environments and regions",
+      "Automated state validation and linting via TFLint and Checkov",
+      "Dynamic Auto Scaling based on CPU utilization and target tracking"
     ]
   },
   {
-    id: "pulse-metrics",
-    title: "Pulse Analytics Studio",
-    tagline: "Sub-Second Timeseries Telemetry & Product Analytics",
-    category: "Full Stack",
+    id: "enterprise-cicd-pipeline",
+    title: "Enterprise DevSecOps Pipeline",
+    tagline: "Multi-Stage Automated CI/CD with Docker, Trivy & AWS ECS Deployment",
+    category: "CI/CD & GitOps",
     featured: true,
-    bannerGradient: "linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)",
-    metrics: "10M+ events/day | Zero render lag",
-    description: "Lightweight, privacy-first analytics dashboard offering real-time user session replays, funnel breakdowns, and customizable metric widgets.",
-    detailedDescription: "Created to provide product teams with instantaneous insights without third-party tracking baggage. Built with ClickHouse backplane, custom canvas graphing engine, and end-to-end encryption.",
-    techStack: ["React", "TypeScript", "ClickHouse", "Go", "Canvas API", "Tailwind CSS"],
-    stars: 580,
-    forks: 92,
-    liveUrl: "https://pulse-metrics.dev",
-    githubUrl: "https://github.com/girish-sharma/pulse-metrics",
+    bannerGradient: "linear-gradient(135deg, #059669 0%, #0284c7 100%)",
+    metrics: "< 3.5 min Build-to-Deploy | Automated Security Scanning",
+    description: "End-to-end GitHub Actions pipeline that triggers on code pushes, runs automated unit tests, performs Docker container image vulnerability scans with Trivy, and deploys to AWS ECS Fargate.",
+    detailedDescription: "Transforms code pushes into secure production containers. If any critical CVE is found during Trivy vulnerability scanning, the pipeline automatically aborts and notifies engineers via Slack. Successful builds are tagged semantically, pushed to AWS ECR, and deployed to ECS via rolling update.",
+    techStack: ["GitHub Actions", "Docker", "Trivy Scanner", "AWS ECS Fargate", "AWS ECR", "Slack API"],
+    stars: 418,
+    forks: 64,
+    liveUrl: "https://github.com/girish-sharma/enterprise-devsecops-pipeline",
+    githubUrl: "https://github.com/girish-sharma/enterprise-devsecops-pipeline",
     highlights: [
-      "Zero-latency canvas heatmaps rendering 50,000 datapoints",
-      "Sub-15kb tracking snippet with offline queueing",
-      "Self-hostable with single Docker Compose command"
+      "Automated Trivy container scanning preventing insecure image pushes",
+      "Optimized multi-stage Docker builds reducing container footprint by 65%",
+      "Automated Slack webhooks for instant build pass/fail alerts"
     ]
   },
   {
-    id: "hyper-forge",
-    title: "HyperForge Design System",
-    tagline: "Headless Accessible UI Primitives with Native Gestures",
-    category: "Frontend / UI",
+    id: "observability-prometheus-grafana",
+    title: "Cloud Telemetry & Observability Hub",
+    tagline: "Full-Stack Metrics, Node Exporters & Alertmanager Dashboarding",
+    category: "Monitoring",
     featured: false,
-    bannerGradient: "linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)",
-    metrics: "4.8k npm downloads/wk | 100% WCAG AAA",
-    description: "A comprehensive React component library engineered for zero-runtime CSS, keyboard navigation compliance, and fluid micro-interactions.",
-    detailedDescription: "Provides accessible primitives for dropdowns, virtualized lists, dialog modals, and animated drawers with spring physics. Fully customizable via CSS variables.",
-    techStack: ["React", "TypeScript", "CSS Modules", "Storybook", "Rollup"],
-    stars: 840,
-    forks: 110,
-    liveUrl: "https://hyperforge-ui.dev",
-    githubUrl: "https://github.com/girish-sharma/hyper-forge",
+    bannerGradient: "linear-gradient(135deg, #f59e0b 0%, #dc2626 100%)",
+    metrics: "99.9% Uptime Telemetry | <15s Alert Latency",
+    description: "Centralized monitoring infrastructure utilizing Prometheus, Grafana, and Alertmanager deployed via Docker Compose to monitor host metrics, container performance, and application endpoints.",
+    detailedDescription: "Configured with customized Grafana dashboards tracking CPU, memory saturation, network I/O, and HTTP 5xx error spikes. Alertmanager rules route high-priority notifications to Slack and email when CPU thresholds exceed 85% for more than 2 minutes.",
+    techStack: ["Prometheus", "Grafana", "Alertmanager", "Node Exporter", "Docker Compose", "cAdvisor"],
+    stars: 189,
+    forks: 27,
+    liveUrl: "https://github.com/girish-sharma/observability-hub",
+    githubUrl: "https://github.com/girish-sharma/observability-hub",
     highlights: [
-      "Zero external runtime dependencies",
-      "Comprehensive keyboard shortcuts & screen-reader aria labels",
-      "Interactive Storybook with 60+ tested scenarios"
+      "Pre-configured Grafana boards for container and host telemetry",
+      "Automated Alertmanager routing with severity classifications",
+      "Persistent metric storage with Prometheus volume mounts"
     ]
   },
   {
-    id: "zenith-cache",
-    title: "Zenith Edge Cache",
-    tagline: "Globally Distributed Tiered Caching for Serverless Functions",
-    category: "AI & Cloud",
+    id: "nginx-reverse-proxy-ssl",
+    title: "Zero-Downtime Nginx Ingress & SSL",
+    tagline: "Automated Let's Encrypt SSL Renewal & Load Balancer with Docker",
+    category: "CI/CD & GitOps",
     featured: false,
-    bannerGradient: "linear-gradient(135deg, #10b981 0%, #0284c7 100%)",
-    metrics: "12ms p99 cache hits | 99.98% availability",
-    description: "High-performance edge key-value cache layer tailored for AI embeddings and dynamic API response acceleration across 280+ Cloudflare edge locations.",
-    detailedDescription: "Provides intelligent cache invalidation via stale-while-revalidate protocols and vector proximity search directly at edge nodes.",
-    techStack: ["Rust", "Cloudflare Workers", "TypeScript", "WebAssembly"],
-    stars: 345,
-    forks: 41,
-    liveUrl: "https://zenith-cache.dev",
-    githubUrl: "https://github.com/girish-sharma/zenith-cache",
+    bannerGradient: "linear-gradient(135deg, #10b981 0%, #0d9488 100%)",
+    metrics: "A+ SSL Rating | Sub-5ms Reverse Proxy Latency",
+    description: "Containerized Nginx reverse proxy architecture equipped with automated Let's Encrypt SSL certificate generation, HTTP/2 enforcement, and gzip compression.",
+    detailedDescription: "Provides secure ingress and traffic distribution for backend web services. Features an automated cron container that triggers SSL renewal without requiring service restarts, alongside rate-limiting rules to mitigate brute-force attempts.",
+    techStack: ["Nginx", "Certbot", "Docker", "Bash", "Linux", "SSL/TLS"],
+    stars: 142,
+    forks: 18,
+    liveUrl: "https://github.com/girish-sharma/nginx-docker-ssl",
+    githubUrl: "https://github.com/girish-sharma/nginx-docker-ssl",
     highlights: [
-      "Compiled Wasm core for instant execution",
-      "Automatic tag-based cache purging in under 150ms globally",
-      "Edge-computed cryptographic validation"
+      "A+ SSL Labs rating with modern TLS 1.3 cipher suites",
+      "Automated certificate rotation via Certbot sidecar container",
+      "Configured rate limiting and security headers (HSTS, CSP)"
     ]
   }
 ];
 
 export const experienceData = [
   {
-    role: "Lead Full Stack Architect",
-    company: "Aetherial Labs",
+    role: "Cloud & DevOps Engineering Intern",
+    company: "CloudMatrix Technologies",
     location: "Bangalore (Hybrid)",
-    period: "2023 - Present",
-    description: "Leading the core platform team of 12 engineers in building next-generation AI developer tooling and high-concurrency cloud systems.",
+    period: "2023 - 2024",
+    description: "Assisted senior platform engineers in managing AWS cloud infrastructure, writing Docker multi-stage builds, and maintaining automated CI/CD deployment pipelines.",
     achievements: [
-      "Architected distributed real-time event streaming pipeline processing 15M+ daily messages with 99.99% uptime.",
-      "Spearheaded migration to micro-frontends with Vite and React 19, improving build times by 68% and first-contentful paint by 42%.",
-      "Mentored 8 senior engineers and established company-wide automated code quality & security gates."
+      "Containerized 4 legacy backend services using Docker multi-stage builds, cutting container sizes by 50% and improving local dev setup time.",
+      "Constructed reusable GitHub Actions CI workflows for automated linting, test execution, and Docker Hub image publication.",
+      "Configured Prometheus Node Exporter and built Grafana dashboards to monitor staging server CPU, memory, and container health.",
+      "Authored Bash scripts to automate routine database backups to Amazon S3 with lifecycle transition policies."
     ],
-    tech: ["React 19", "TypeScript", "Node.js", "FastAPI", "PostgreSQL", "AWS ECS", "Kafka"]
+    tech: ["AWS (EC2, S3, IAM)", "Docker", "GitHub Actions", "Prometheus", "Grafana", "Bash", "Linux"]
   },
   {
-    role: "Senior Software Engineer",
-    company: "Vanguard FinTech Systems",
+    role: "DevOps & Cloud Capstone Engineer",
+    company: "University Cloud Computing Lab",
     location: "Bangalore",
-    period: "2021 - 2023",
-    description: "Engineered secure transactional interfaces and automated reconciliation microservices for high-volume banking workflows.",
+    period: "2022 - 2023",
+    description: "Engineered an end-to-end automated microservices deployment pipeline on a multi-node Kubernetes cluster as part of the engineering degree capstone.",
     achievements: [
-      "Designed and deployed a fault-tolerant payment settlement engine handling $40M+ in monthly transaction volumes.",
-      "Optimized database indices and connection pooling, slashing p95 API latency from 450ms down to 65ms.",
-      "Implemented WCAG AAA compliance across consumer web dashboards."
+      "Deployed and configured a 3-node Kubernetes cluster using Minikube and kubeadm for microservices hosting.",
+      "Implemented GitOps deployment workflow using ArgoCD, reducing release deployment steps from manual scripts to a single Git commit.",
+      "Wrote comprehensive Terraform configuration files to provision underlying cloud networking, VPCs, and security groups."
     ],
-    tech: ["React", "Redux Toolkit", "Express.js", "PostgreSQL", "Redis", "Docker", "Stripe API"]
+    tech: ["Kubernetes", "Terraform", "ArgoCD", "Helm", "Docker Compose", "Python", "Git"]
   },
   {
-    role: "Frontend Engineer",
-    company: "Cognitive Pixel Studio",
-    location: "Remote",
-    period: "2019 - 2021",
-    description: "Built performant web portals, dynamic interactive dashboards, and design systems for client startups across North America and Europe.",
+    role: "B.Tech in Computer Science & Engineering",
+    company: "APJ Abdul Kalam Technological University",
+    location: "India",
+    period: "2020 - 2024",
+    description: "Focused coursework in Cloud Computing, Operating Systems, Computer Networks, Distributed Systems, and Linux Shell Programming.",
     achievements: [
-      "Shipped 18 web applications from ground zero to production deployment.",
-      "Authored modular UI design system reused across 6 client enterprise platforms.",
-      "Reduced bundle sizes across projects by average 45% using code splitting and modern asset bundling."
+      "Graduated with Distinction (First Class with Honours).",
+      "Led the University Linux & Open Source Club, conducting workshops on Docker, Git, and Cloud Infrastructure for 120+ students.",
+      "Completed certifications: AWS Certified Cloud Practitioner & Docker Fundamentals."
     ],
-    tech: ["JavaScript (ES6+)", "React", "CSS3 / Sass", "REST APIs", "Jest", "Webpack"]
+    tech: ["Linux", "Operating Systems", "Networking", "Data Structures", "Python", "Bash"]
   }
 ];
 
 export const testimonialsData = [
   {
-    quote: "Girish is that rare caliber of engineer who pairs deep architectural knowledge with an obsessive eye for user interface delight. He delivered our flagship platform ahead of schedule with flawless reliability.",
-    name: "Alex Thorne",
-    title: "VP of Engineering at Aetherial Labs",
+    quote: "Girish demonstrates an exceptional grasp of DevOps fundamentals that is rare in a fresher. His grasp of Docker, Kubernetes manifests, and CI/CD pipelines made our staging releases completely painless.",
+    name: "Vikram Rathore",
+    title: "Senior DevOps Architect at CloudMatrix",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     rating: 5
   },
   {
-    quote: "Under Girish's technical leadership, our booking engine went from frequent concurrency locks to rock-solid 99.99% uptime. His code is clean, meticulously tested, and documented.",
-    name: "Samantha Reed",
-    title: "Head of Product at Hospitality Nexus",
+    quote: "What impressed me most about Girish was his proactive approach to automation. He took the initiative to set up our Grafana dashboards and automate our S3 backups without needing supervision.",
+    name: "Pooja Nair",
+    title: "Lead Systems Engineer at CloudMatrix",
     avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
     rating: 5
   },
   {
-    quote: "Working with Girish was a masterclass in speed and quality. He brought innovative ideas to our design system that elevated our entire customer experience.",
-    name: "Marcus Vance",
-    title: "Co-Founder & CTO at FinScale",
+    quote: "Girish spearheaded our team's GitOps adoption with ArgoCD and Helm. His documentation was crystal clear, and his infrastructure manifests were structured like a seasoned engineer's.",
+    name: "Arun Menon",
+    title: "Capstone Project Advisor & Professor",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     rating: 5
   }
 ];
 
 export const terminalCommands = {
-  help: "Available commands: 'about', 'skills', 'projects', 'contact', 'status', 'clear', 'sudo hire'",
-  about: "Girish Sharma - Senior Full Stack Engineer with 6+ years specializing in React, Node, Cloud & AI systems.",
-  skills: "Core: React 19, TypeScript, Node.js, Python, PostgreSQL, Redis, Docker, AWS, AI Agent pipelines.",
-  projects: "1. NexusCloud AI Engine\n2. Strata Hospitality Suite\n3. Pulse Analytics Studio\n4. HyperForge Design System",
+  help: "Available commands: 'about', 'skills', 'projects', 'status', 'architecture', 'contact', 'clear', 'sudo hire'",
+  about: "Girish Sharma - Associate Cloud & DevOps Engineer specializing in AWS, Docker, Kubernetes, Terraform & CI/CD automation.",
+  skills: "Core: AWS, Docker, Kubernetes, Terraform, GitHub Actions, Jenkins, Linux, Bash, Prometheus, Grafana, Python.",
+  projects: "1. GitOps Kubernetes Fleet (ArgoCD & EKS)\n2. AWS 3-Tier Architecture (Terraform)\n3. Enterprise DevSecOps Pipeline (Trivy & ECS)\n4. Cloud Telemetry Hub (Prometheus & Grafana)",
   contact: "Email: girish.sharma.dev@gmail.com | LinkedIn: /in/girish-sharma-dev | GitHub: @girish-sharma",
-  status: "🟢 System Status: ALL SYSTEMS OPERATIONAL | Response Latency: 18ms | Open for Q3/Q4 contracts.",
+  status: "🟢 DevOps Status: ALL CI/CD RUNNERS ONLINE | Cluster Health: 99.9% | Actively interviewing for Cloud/DevOps roles.",
+  architecture: "Type 'architecture' or switch to the stack.json tab to view declarative cloud infrastructure details.",
   "sudo hire": "🎉 Sudo permission granted! Initializing fast-track interview protocol. Redirecting to contact..."
 };

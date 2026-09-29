@@ -30,22 +30,22 @@ export default function Hero() {
             </div>
 
             <h1 className="hero-title">
-              Crafting <span className="gradient-text">resilient cloud systems</span> & fluid user interfaces.
+              Automating <span className="gradient-text">resilient cloud infrastructure</span> & delivery pipelines.
             </h1>
 
             <p className="hero-subtitle">
-              Hi, I'm <strong style={{ color: 'var(--text-primary)' }}>{personalInfo.name}</strong> — a Senior Full Stack & AI Systems Engineer with over 6 years of experience engineering high-throughput SaaS platforms, reactive React ecosystems, and intelligent agentic workflows.
+              Hi, I'm <strong style={{ color: 'var(--text-primary)' }}>{personalInfo.name}</strong> — an Associate DevOps & Cloud Engineer passionate about automating CI/CD pipelines, containerizing microservices, and provisioning resilient cloud infrastructure with Docker, Kubernetes, and Terraform.
             </p>
 
             <div className="hero-actions">
               <a href="#projects" className="btn btn-primary">
-                View Featured Work
+                View DevOps Projects
                 <ArrowRight size={16} />
               </a>
 
               <a href="#contact" className="btn btn-secondary">
                 <Briefcase size={16} />
-                Discuss a Project
+                Connect / Hire Me
               </a>
 
               <button

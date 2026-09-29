@@ -49,7 +49,7 @@ export default function Navbar({ theme, onToggleTheme }) {
           </div>
           <div className="nav-brand-text">
             <span className="brand-name">Girish Sharma</span>
-            <span className="brand-tag">v3.4 · ARCHITECT</span>
+            <span className="brand-tag">DEVOPS & CLOUD</span>
           </div>
         </a>
 

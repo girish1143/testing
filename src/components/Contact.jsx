@@ -8,8 +8,8 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    service: 'Full-Stack Web App',
-    budget: '$15k - $50k',
+    service: 'DevOps Full-Time Role',
+    budget: 'Full-Time Employment',
     message: '',
   });
 
@@ -27,8 +27,8 @@ export default function Contact() {
       setFormData({
         name: '',
         email: '',
-        service: 'Full-Stack Web App',
-        budget: '$15k - $50k',
+        service: 'DevOps Full-Time Role',
+        budget: 'Full-Time Employment',
         message: '',
       });
     }, 1200);
@@ -44,10 +44,10 @@ export default function Contact() {
             Direct Communication
           </span>
           <h2 className="section-title">
-            Let's Build Something <span className="gradient-text">Exceptional</span>
+            Let's Connect & <span className="gradient-text">Build Together</span>
           </h2>
           <p className="section-description">
-            Available for select high-impact engineering leadership roles, complex full-stack architecture contracts, and technical advisory.
+            Actively seeking Entry-Level / Associate DevOps, Cloud Infrastructure, and Platform Engineering roles. Ready to deploy and contribute from day one.
           </p>
         </div>
 
@@ -187,33 +187,32 @@ export default function Contact() {
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label className="form-label" htmlFor="contact-service">Scope of Engagement</label>
+                    <label className="form-label" htmlFor="contact-service">Opportunity / Engagement Type</label>
                     <select
                       id="contact-service"
                       className="form-select"
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     >
-                      <option value="Full-Stack Web App">Full-Stack Web App (React 19 / Node / Cloud)</option>
-                      <option value="AI & LLM Integration">AI & Autonomous Agent Orchestration</option>
-                      <option value="Architecture & Performance Audit">Architecture & Performance Audit</option>
-                      <option value="Senior / Principal Role">Full-Time / Principal Engineering Role</option>
-                      <option value="Advisory / Consultation">Technical Advisory & Consultation</option>
+                      <option value="DevOps Full-Time Role">Full-Time / Associate DevOps Role</option>
+                      <option value="CI/CD Pipeline Automation">CI/CD Pipeline Automation (GitHub Actions / Jenkins)</option>
+                      <option value="Docker & Kubernetes Orchestration">Docker & Kubernetes Containerization</option>
+                      <option value="AWS & Terraform Infrastructure">Infrastructure as Code (Terraform & AWS)</option>
+                      <option value="Observability & Monitoring">Observability Setup (Prometheus & Grafana)</option>
                     </select>
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label" htmlFor="contact-budget">Estimated Budget / Scope</label>
+                    <label className="form-label" htmlFor="contact-budget">Role Type / Availability</label>
                     <select
                       id="contact-budget"
                       className="form-select"
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     >
-                      <option value="$5k - $15k">$5,000 - $15,000</option>
-                      <option value="$15k - $50k">$15,000 - $50,000</option>
-                      <option value="$50k+">$50,000+ Enterprise</option>
-                      <option value="Full-Time / Contract">Permanent / Long-Term Retainer</option>
+                      <option value="Full-Time Employment">Full-Time (Immediate Availability)</option>
+                      <option value="Contract / Freelance">Contract / Project-Based Infrastructure</option>
+                      <option value="Internship / Trainee">Internship / Apprenticeship</option>
                     </select>
                   </div>
                 </div>

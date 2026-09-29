@@ -89,16 +89,16 @@ export default function ProjectModal({ project, onClose }) {
           <div>
             <h3 className="modal-section-title">
               <Layers size={18} style={{ color: 'var(--accent-emerald)' }} />
-              Interactive Simulation Sandbox
+              Interactive Deployment Pipeline Simulation
             </h3>
             <div className="interactive-sandbox">
               <div className="sandbox-header">
                 <div>
                   <div style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-primary)' }}>
-                    Live Engine Stress & Verification Test
+                    Live CI/CD & Cluster Health Verification
                   </div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                    Trigger real-time simulated telemetry for {project.title}
+                    Trigger simulated automated rollout telemetry for {project.title}
                   </div>
                 </div>
                 <button
@@ -107,32 +107,32 @@ export default function ProjectModal({ project, onClose }) {
                   disabled={isRunningSim}
                 >
                   {isRunningSim ? <Loader2 size={14} className="spin-icon" /> : <Play size={14} />}
-                  {isRunningSim ? 'Executing...' : 'Run Live Test'}
+                  {isRunningSim ? 'Deploying...' : 'Trigger Pipeline'}
                 </button>
               </div>
 
               <div className="simulation-steps">
                 <div className={`sim-step ${currentStep >= 1 ? (currentStep === 1 ? 'active' : 'completed') : ''}`}>
                   <span>{currentStep > 1 ? '✓' : '1.'}</span>
-                  <span>[Init] Verifying cryptographic JWT session & edge routing...</span>
-                  {currentStep === 1 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#6366f1' }}>Running...</span>}
+                  <span>[CI Security] Running Docker linter & Trivy CVE vulnerability scan...</span>
+                  {currentStep === 1 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#6366f1' }}>Scanning...</span>}
                 </div>
 
                 <div className={`sim-step ${currentStep >= 2 ? (currentStep === 2 ? 'active' : 'completed') : ''}`}>
                   <span>{currentStep > 2 ? '✓' : '2.'}</span>
-                  <span>[Cache] Probing Redis distributed memory cluster: 0.8ms roundtrip.</span>
-                  {currentStep === 2 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#6366f1' }}>Syncing...</span>}
+                  <span>[Build & Push] Building multi-stage image & pushing to AWS ECR (layer cache: 0.9s).</span>
+                  {currentStep === 2 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#6366f1' }}>Pushing...</span>}
                 </div>
 
                 <div className={`sim-step ${currentStep >= 3 ? (currentStep === 3 ? 'active' : 'completed') : ''}`}>
                   <span>{currentStep > 3 ? '✓' : '3.'}</span>
-                  <span>[Pipeline] Executing state machine transitions & data mutations.</span>
-                  {currentStep === 3 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#6366f1' }}>Processing...</span>}
+                  <span>[GitOps & K8s] ArgoCD reconciling Helm release & rolling out zero-downtime pods.</span>
+                  {currentStep === 3 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#6366f1' }}>Rolling Out...</span>}
                 </div>
 
                 <div className={`sim-step ${currentStep >= 4 ? 'completed' : ''}`}>
                   <span>{currentStep >= 4 ? '✓' : '4.'}</span>
-                  <span>[Success] 200 OK — Payload committed with zero errors.</span>
+                  <span>[Healthy] 200 OK — Ingress routed, Prometheus metrics scraping (0% downtime).</span>
                   {currentStep >= 4 && <span style={{ marginLeft: 'auto', fontSize: '0.75rem', color: '#10b981' }}>Completed</span>}
                 </div>
               </div>

@@ -7,10 +7,10 @@ export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categoryIcons = {
-    'Frontend Architecture': <Layout size={22} />,
-    'Backend & Systems': <Server size={22} />,
-    'Cloud & DevOps': <Cloud size={22} />,
-    'AI & Intelligent Tooling': <Cpu size={22} />,
+    'Cloud & Infrastructure': <Cloud size={22} />,
+    'Containers & Orchestration': <Server size={22} />,
+    'CI/CD & Automation': <Cpu size={22} />,
+    'Observability & Scripting': <Layout size={22} />,
   };
 
   const displayedCategories =
@@ -25,13 +25,13 @@ export default function Skills() {
         <div className="section-header">
           <span className="section-tag">
             <Sparkles size={14} />
-            Technical Proficiency
+            DevOps & Cloud Competencies
           </span>
           <h2 className="section-title">
-            Architecture & <span className="gradient-text">Core Capabilities</span>
+            Infrastructure & <span className="gradient-text">Core Capabilities</span>
           </h2>
           <p className="section-description">
-            Battle-tested technical stack honed across fintech platforms, high-traffic SaaS systems, and autonomous agent frameworks.
+            Hands-on technical stack covering AWS cloud provisioning, container orchestration, automated CI/CD pipelines, and proactive observability.
           </p>
         </div>
 

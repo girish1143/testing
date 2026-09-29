@@ -8,7 +8,7 @@ export default function InteractiveTerminal() {
   const [history, setHistory] = useState([
     {
       cmd: 'girish --status',
-      output: 'Ready · Full Stack & AI Systems Architect · Online'
+      output: 'Ready · Associate DevOps & Cloud Engineer · Online'
     },
     {
       cmd: 'help',
@@ -141,7 +141,7 @@ export default function InteractiveTerminal() {
         {activeTab === 'telemetry' && (
           <div className="telemetry-grid">
             <div className="telemetry-card">
-              <div className="telemetry-label">Cluster Status</div>
+              <div className="telemetry-label">K8s & Docker Cluster</div>
               <div className="telemetry-val" style={{ color: '#10b981' }}>OPERATIONAL</div>
               <div className="progress-bar-bg">
                 <div className="progress-bar-fill" style={{ width: '99.98%' }}></div>
@@ -149,24 +149,24 @@ export default function InteractiveTerminal() {
             </div>
 
             <div className="telemetry-card">
-              <div className="telemetry-label">API Latency (p99)</div>
-              <div className="telemetry-val">18 ms</div>
+              <div className="telemetry-label">CI/CD Pipeline Success</div>
+              <div className="telemetry-val" style={{ color: '#38bdf8' }}>100% Passing</div>
               <div className="progress-bar-bg">
-                <div className="progress-bar-fill" style={{ width: '22%' }}></div>
+                <div className="progress-bar-fill" style={{ width: '98%' }}></div>
               </div>
             </div>
 
             <div className="telemetry-card">
-              <div className="telemetry-label">Production Deployments</div>
-              <div className="telemetry-val">45+ Apps</div>
+              <div className="telemetry-label">Prometheus Metric Latency</div>
+              <div className="telemetry-val">12 ms</div>
               <div className="progress-bar-bg">
-                <div className="progress-bar-fill" style={{ width: '95%' }}></div>
+                <div className="progress-bar-fill" style={{ width: '15%' }}></div>
               </div>
             </div>
 
             <div className="telemetry-card">
-              <div className="telemetry-label">Vite + React Bundler</div>
-              <div className="telemetry-val" style={{ color: '#38bdf8' }}>Ready (HMR Active)</div>
+              <div className="telemetry-label">Infrastructure State (IaC)</div>
+              <div className="telemetry-val" style={{ color: '#10b981' }}>Terraform Synced</div>
               <div className="progress-bar-bg">
                 <div className="progress-bar-fill" style={{ width: '100%' }}></div>
               </div>
@@ -178,18 +178,19 @@ export default function InteractiveTerminal() {
           <pre style={{ margin: 0, color: '#93c5fd', fontSize: '0.8rem', lineHeight: '1.5' }}>
 {`{
   "engineer": "Girish Sharma",
-  "status": "Available For High-Impact Roles",
-  "architecture": {
-    "frontend": ["React 19", "Next.js", "TypeScript", "Tailwind", "Vite"],
-    "backend": ["Node.js", "Express", "FastAPI", "Python", "WebSockets"],
-    "data_layer": ["PostgreSQL", "Redis", "pgvector", "Kafka", "Prisma"],
-    "cloud": ["AWS", "Docker", "Kubernetes", "Vercel", "GitHub Actions"],
-    "ai_engine": ["OpenAI", "Anthropic", "LangChain", "Vector RAG"]
+  "role": "Associate Cloud & DevOps Engineer",
+  "status": "Actively Seeking DevOps Opportunities",
+  "infrastructure_stack": {
+    "cloud": ["AWS (EC2, S3, IAM, VPC, RDS, EKS)"],
+    "containers": ["Docker", "Docker Compose", "Kubernetes", "Helm"],
+    "iac_and_config": ["Terraform", "Linux / Bash Shell"],
+    "cicd": ["GitHub Actions", "Jenkins", "ArgoCD (GitOps)"],
+    "observability": ["Prometheus", "Grafana", "Alertmanager", "CloudWatch"]
   },
   "principles": [
-    "Clean code that scales gracefully",
-    "Under 100ms user interaction responsiveness",
-    "Accessibility & SEO by default"
+    "Everything as code (IaC, GitOps, CI/CD)",
+    "Zero-downtime rolling & canary deployments",
+    "Automated security scans & proactive monitoring"
   ]
 }`}
           </pre>

@@ -40,7 +40,7 @@ Generated via Girish Sharma Portfolio System
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `Girish_Sharma_Senior_FullStack_Resume.txt`;
+    link.download = `Girish_Sharma_DevOps_Resume.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -57,13 +57,13 @@ Generated via Girish Sharma Portfolio System
         <div className="section-header">
           <span className="section-tag">
             <Briefcase size={14} />
-            Career Trajectory
+            Experience & Education
           </span>
           <h2 className="section-title">
-            Leadership & <span className="gradient-text">Engineering Impact</span>
+            DevOps & <span className="gradient-text">Practical Impact</span>
           </h2>
           <p className="section-description">
-            A track record of scaling distributed architectures, spearheading front-end modernization, and mentoring engineering teams.
+            Hands-on experience building automated CI/CD pipelines, containerizing applications, orchestrating Kubernetes workloads, and provisioning cloud infrastructure.
           </p>
         </div>
 
