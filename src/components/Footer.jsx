@@ -3,7 +3,7 @@ import { personalInfo } from '../data/portfolioData';
 import { Code2, ArrowUp, Clock } from 'lucide-react';
 import './Footer.css';
 
-export default function Footer() {
+export default function Footer({ currentRoute = 'home', onNavigate }) {
   const [istTime, setIstTime] = useState('');
 
   useEffect(() => {
@@ -28,13 +28,33 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNav = (route, sectionId) => {
+    if (route) {
+      if (onNavigate) {
+        onNavigate(route);
+      } else {
+        window.location.hash = `#/${route}`;
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (sectionId) {
+      if (currentRoute !== 'home') {
+        if (onNavigate) onNavigate('home');
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+      } else {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <footer className="footer-section">
       <div className="container">
         <div className="footer-top">
           {/* Brand info */}
           <div className="footer-brand-col">
-            <a href="#home" className="footer-brand">
+            <a href="#/" onClick={(e) => { e.preventDefault(); handleNav('home'); }} className="footer-brand">
               <div className="brand-icon-box">
                 <Code2 size={20} />
               </div>
@@ -51,14 +71,16 @@ export default function Footer() {
 
           {/* Quick links */}
           <div className="footer-nav-col">
-            <h4 className="footer-nav-title">Sitemap</h4>
-            <a href="#home" className="footer-nav-link">Overview</a>
-            <a href="#projects" className="footer-nav-link">Featured Projects</a>
-            <a href="#pipeline" className="footer-nav-link">CI/CD Pipeline Simulator</a>
-            <a href="#skills" className="footer-nav-link">DevOps & Cloud Stack</a>
-            <a href="#certifications" className="footer-nav-link">Verified Certifications</a>
-            <a href="#experience" className="footer-nav-link">Career Milestones</a>
-            <a href="#contact" className="footer-nav-link">Get In Touch</a>
+            <h4 className="footer-nav-title">Sitemap & Pages</h4>
+            <a href="#/" onClick={(e) => { e.preventDefault(); handleNav('home'); }} className="footer-nav-link">Overview</a>
+            <a href="#/architecture" onClick={(e) => { e.preventDefault(); handleNav('architecture'); }} className="footer-nav-link" style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>Architecture Lab ★</a>
+            <a href="#/articles" onClick={(e) => { e.preventDefault(); handleNav('articles'); }} className="footer-nav-link" style={{ color: 'var(--accent-emerald)', fontWeight: 600 }}>Case Studies & Articles</a>
+            <a href="#/toolbox" onClick={(e) => { e.preventDefault(); handleNav('toolbox'); }} className="footer-nav-link" style={{ color: 'var(--accent-secondary)', fontWeight: 600 }}>DevOps Toolbox ★</a>
+            <a href="#projects" onClick={(e) => { e.preventDefault(); handleNav(null, 'projects'); }} className="footer-nav-link">Featured Projects</a>
+            <a href="#pipeline" onClick={(e) => { e.preventDefault(); handleNav(null, 'pipeline'); }} className="footer-nav-link">CI/CD Pipeline Simulator</a>
+            <a href="#skills" onClick={(e) => { e.preventDefault(); handleNav(null, 'skills'); }} className="footer-nav-link">DevOps & Cloud Stack</a>
+            <a href="#certifications" onClick={(e) => { e.preventDefault(); handleNav(null, 'certifications'); }} className="footer-nav-link">Verified Certifications</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); handleNav(null, 'contact'); }} className="footer-nav-link">Get In Touch</a>
           </div>
 
           {/* Live telemetry column */}

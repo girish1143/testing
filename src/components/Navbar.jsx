@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Code2, Menu, X, Sparkles, Command } from 'lucide-react';
+import { Sun, Moon, Code2, Menu, X, Sparkles, Command, Cpu, Wrench, BookOpen, Layers } from 'lucide-react';
 import './Navbar.css';
 
-export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
+export default function Navbar({ theme, onToggleTheme, onOpenPalette, currentRoute = 'home', onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -10,6 +10,8 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      if (currentRoute !== 'home') return;
 
       const sections = ['home', 'projects', 'pipeline', 'skills', 'certifications', 'experience', 'testimonials', 'contact'];
       const scrollPosition = window.scrollY + 200;
@@ -29,22 +31,81 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentRoute]);
 
   const navItems = [
-    { label: 'Overview', href: '#home', id: 'home' },
-    { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'CI/CD Pipeline', href: '#pipeline', id: 'pipeline' },
-    { label: 'Tech Stack', href: '#skills', id: 'skills' },
-    { label: 'Certifications', href: '#certifications', id: 'certifications' },
-    { label: 'Experience', href: '#experience', id: 'experience' },
-    { label: 'Contact', href: '#contact', id: 'contact' },
+    { label: 'Overview', route: 'home', href: '#/', id: 'home' },
+    { label: 'Architecture Lab', route: 'architecture', href: '#/architecture', id: 'architecture', isNew: true },
+    { label: 'Case Studies', route: 'articles', href: '#/articles', id: 'articles' },
+    { label: 'DevOps Toolbox', route: 'toolbox', href: '#/toolbox', id: 'toolbox', isHot: true },
+    { label: 'Projects', section: 'projects', href: '#projects', id: 'projects' },
+    { label: 'Tech Stack', section: 'skills', href: '#skills', id: 'skills' },
   ];
+
+  const handleItemClick = (e, item) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    if (item.route) {
+      if (onNavigate) {
+        onNavigate(item.route);
+      } else {
+        window.location.hash = item.href;
+      }
+    } else if (item.section) {
+      if (currentRoute !== 'home') {
+        if (onNavigate) onNavigate('home');
+        setTimeout(() => {
+          const el = document.getElementById(item.section);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+      } else {
+        const el = document.getElementById(item.section);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleBrandClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('home');
+    } else {
+      window.location.hash = '#/';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (currentRoute !== 'home') {
+      if (onNavigate) onNavigate('home');
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const isItemActive = (item) => {
+    if (item.route) {
+      if (item.route === 'home') {
+        return currentRoute === 'home' && (activeSection === 'home' || activeSection === 'testimonials');
+      }
+      return currentRoute === item.route;
+    }
+    if (item.section) {
+      return currentRoute === 'home' && activeSection === item.section;
+    }
+    return false;
+  };
 
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <a href="#home" className="nav-brand">
+        <a href="#/" onClick={handleBrandClick} className="nav-brand">
           <div className="brand-icon-box">
             <Code2 size={20} />
           </div>
@@ -56,16 +117,22 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
 
         {/* Desktop Nav Items */}
         <ul className="nav-links">
-          {navItems.map((item) => (
-            <li key={item.id}>
-              <a
-                href={item.href}
-                className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {navItems.map((item) => {
+            const active = isItemActive(item);
+            return (
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  onClick={(e) => handleItemClick(e, item)}
+                  className={`nav-link ${active ? 'active' : ''}`}
+                >
+                  <span>{item.label}</span>
+                  {item.isNew && <span className="nav-badge-new">Interactive</span>}
+                  {item.isHot && <span className="nav-badge-tools">Tools</span>}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Action buttons */}
@@ -89,13 +156,13 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          <a
-            href="#contact"
+          <button
+            onClick={handleContactClick}
             className="btn btn-primary btn-sm"
           >
             <Sparkles size={15} />
             Let's Talk
-          </a>
+          </button>
 
           <button
             className="mobile-toggle-btn"
@@ -114,20 +181,21 @@ export default function Navbar({ theme, onToggleTheme, onOpenPalette }) {
             <a
               key={item.id}
               href={item.href}
-              className="mobile-link"
-              onClick={() => setMobileMenuOpen(false)}
+              className={`mobile-link ${isItemActive(item) ? 'active' : ''}`}
+              onClick={(e) => handleItemClick(e, item)}
             >
-              {item.label}
+              <span>{item.label}</span>
+              {item.isNew && <span className="nav-badge-new">Interactive</span>}
+              {item.isHot && <span className="nav-badge-tools">Tools</span>}
             </a>
           ))}
-          <a
-            href="#contact"
+          <button
+            onClick={handleContactClick}
             className="btn btn-primary"
-            style={{ marginTop: '0.5rem' }}
-            onClick={() => setMobileMenuOpen(false)}
+            style={{ marginTop: '0.5rem', width: '100%', justifyContent: 'center' }}
           >
             Get In Touch
-          </a>
+          </button>
         </div>
       )}
     </header>

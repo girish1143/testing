@@ -14,12 +14,17 @@ import {
   Layers,
   Briefcase,
   Mail,
-  X
+  X,
+  Cpu,
+  BookOpen,
+  Wrench,
+  Calculator,
+  Container
 } from 'lucide-react';
 import { Github, Linkedin } from './SocialIcons';
 import './CommandPalette.css';
 
-export default function CommandPalette({ isOpen, onClose, theme, onToggleTheme }) {
+export default function CommandPalette({ isOpen, onClose, theme, onToggleTheme, onNavigate }) {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -53,15 +58,62 @@ export default function CommandPalette({ isOpen, onClose, theme, onToggleTheme }
     }, 1200);
   };
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  const goToRoute = (route) => {
+    if (onNavigate) {
+      onNavigate(route);
+    } else {
+      window.location.hash = `#/${route}`;
     }
     onClose();
   };
 
+  const scrollTo = (id) => {
+    if (onNavigate) onNavigate('home');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+    onClose();
+  };
+
   const allActions = [
+    {
+      id: 'nav-arch-lab',
+      title: 'Open Architecture Lab (Interactive Topologies)',
+      category: 'Pages & Sandboxes',
+      icon: <Cpu size={16} style={{ color: '#6366f1' }} />,
+      action: () => goToRoute('architecture')
+    },
+    {
+      id: 'nav-articles',
+      title: 'Read Case Studies & Technical Articles',
+      category: 'Pages & Sandboxes',
+      icon: <BookOpen size={16} style={{ color: '#10b981' }} />,
+      action: () => goToRoute('articles')
+    },
+    {
+      id: 'nav-toolbox',
+      title: 'Open DevOps Toolbox (CIDR, Dockerfile, K8s)',
+      category: 'Pages & Sandboxes',
+      icon: <Wrench size={16} style={{ color: '#06b6d4' }} />,
+      action: () => goToRoute('toolbox')
+    },
+    {
+      id: 'tool-cidr',
+      title: 'Tool: CIDR & Subnet Mask Calculator',
+      category: 'DevOps Utilities',
+      icon: <Calculator size={16} style={{ color: '#a855f7' }} />,
+      action: () => goToRoute('toolbox')
+    },
+    {
+      id: 'tool-docker',
+      title: 'Tool: Dockerfile Linter & Security Optimizer',
+      category: 'DevOps Utilities',
+      icon: <Container size={16} style={{ color: '#f59e0b' }} />,
+      action: () => goToRoute('toolbox')
+    },
     {
       id: 'nav-pipeline',
       title: 'Run CI/CD Pipeline Simulator',
