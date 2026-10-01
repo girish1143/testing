@@ -1,0 +1,428 @@
+.hotel-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(4, 6, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  animation: fadeInModal 0.25s ease forwards;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.room-detail-modal {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md), 0 0 50px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes zoomModal {
+  from { transform: scale(0.96) translateY(10px); }
+  to { transform: scale(1) translateY(0); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(7, 9, 14, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: var(--accent-gold);
+  color: #07090e;
+  transform: rotate(90deg);
+}
+
+/* Gallery */
+.modal-gallery-area {
+  position: relative;
+  background: #000;
+  width: 100%;
+}
+
+.gallery-main-viewport {
+  position: relative;
+  height: 340px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-active-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(7, 9, 14, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.gallery-nav-btn:hover {
+  background: var(--accent-gold);
+  color: #000;
+}
+
+.gallery-nav-btn.prev {
+  left: 16px;
+}
+
+.gallery-nav-btn.next {
+  right: 16px;
+}
+
+.gallery-counter {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.gallery-thumbs-row {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--bg-secondary);
+  overflow-x: auto;
+}
+
+.gallery-thumb-btn {
+  width: 70px;
+  height: 48px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: all var(--transition-fast);
+}
+
+.gallery-thumb-btn.active {
+  border-color: var(--accent-gold);
+  opacity: 1;
+}
+
+.gallery-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scrollable Info */
+.modal-info-scroll {
+  padding: 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal-header-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 18px;
+}
+
+.room-meta-type {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-gold);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.modal-room-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.modal-location-rating {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.room-view-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.room-rating-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.modal-price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.price-tag-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.modal-price-num {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  line-height: 1.1;
+}
+
+/* Specs Grid */
+.modal-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.modal-spec-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.modal-spec-cell svg {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+}
+
+.modal-spec-cell div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.cell-value {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cell-value.status-val.available {
+  color: #34d399;
+}
+.cell-value.status-val.occupied {
+  color: #fb7185;
+}
+.cell-value.status-val.cleaning {
+  color: #38bdf8;
+}
+
+/* Sections */
+.modal-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-block-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-left: 3px solid var(--accent-gold);
+  padding-left: 10px;
+}
+
+.modal-description-text {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.modal-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.amenity-item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+}
+
+.amenity-item-row .check-icon {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+}
+
+/* Inclusions Banner */
+.modal-inclusions-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--border-highlight);
+}
+
+.sparkle-gold {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.modal-inclusions-banner h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 4px;
+}
+
+.modal-inclusions-banner p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Occupant Banner */
+.modal-occupant-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.modal-occupant-banner svg {
+  color: #fb7185;
+}
+
+.modal-occupant-banner span {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+/* Footer CTA */
+.modal-action-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.btn-secondary-ghost {
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+.modal-cta-btn {
+  padding: 11px 24px;
+}
+
+@media (max-width: 768px) {
+  .modal-specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .modal-header-meta {
+    flex-direction: column;
+  }
+  .modal-price-box {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
