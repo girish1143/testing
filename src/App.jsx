@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  HOTEL_INFO, 
-  getStoredRooms, 
-  saveStoredRooms, 
-  getStoredReservations, 
-  saveStoredReservations, 
-  getStoredMaintenance, 
-  saveStoredMaintenance, 
-  resetAllHotelData 
+import {
+  HOTEL_INFO,
+  getStoredRooms,
+  saveStoredRooms,
+  getStoredReservations,
+  saveStoredReservations,
+  getStoredMaintenance,
+  saveStoredMaintenance,
+  getStoredUsers,
+  saveStoredUsers,
+  getStoredCurrentUser,
+  saveStoredCurrentUser,
+  resetAllHotelData,
+  DEMO_USERS
 } from './data/hotelData';
 
 import HotelNavbar from './components/HotelNavbar';
@@ -20,6 +25,7 @@ import FrontDeskOps from './components/FrontDeskOps';
 import HousekeepingView from './components/HousekeepingView';
 import DiningConcierge from './components/DiningConcierge';
 import AnalyticsBilling from './components/AnalyticsBilling';
+import AuthPage from './components/AuthPage';
 import HotelFooter from './components/HotelFooter';
 import HotelCommandPalette from './components/HotelCommandPalette';
 import ToastNotification from './components/ToastNotification';
@@ -35,7 +41,7 @@ function App() {
   });
 
   // Dynamic Hash Route Handling:
-  // 'overview' | 'rooms' | 'frontdesk' | 'housekeeping' | 'dining' | 'billing'
+  // 'overview' | 'rooms' | 'frontdesk' | 'housekeeping' | 'dining' | 'billing' | 'signin' | 'signup'
   const [currentRoute, setCurrentRoute] = useState(() => {
     const hash = window.location.hash;
     if (hash.startsWith('#/rooms')) return 'rooms';
@@ -43,6 +49,8 @@ function App() {
     if (hash.startsWith('#/housekeeping')) return 'housekeeping';
     if (hash.startsWith('#/dining')) return 'dining';
     if (hash.startsWith('#/billing')) return 'billing';
+    if (hash.startsWith('#/signin')) return 'signin';
+    if (hash.startsWith('#/signup')) return 'signup';
     return 'overview';
   });
 
@@ -50,6 +58,8 @@ function App() {
   const [rooms, setRooms] = useState(() => getStoredRooms());
   const [reservations, setReservations] = useState(() => getStoredReservations());
   const [maintenanceLogs, setMaintenanceLogs] = useState(() => getStoredMaintenance());
+  const [users, setUsers] = useState(() => getStoredUsers());
+  const [currentUser, setCurrentUser] = useState(() => getStoredCurrentUser());
 
   // Modals & Drawers state
   const [selectedRoomForDetail, setSelectedRoomForDetail] = useState(null);
@@ -89,6 +99,12 @@ function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash.startsWith('#/billing')) {
         setCurrentRoute('billing');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash.startsWith('#/signin')) {
+        setCurrentRoute('signin');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash.startsWith('#/signup')) {
+        setCurrentRoute('signup');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentRoute('overview');
@@ -130,6 +146,14 @@ function App() {
   useEffect(() => {
     saveStoredMaintenance(maintenanceLogs);
   }, [maintenanceLogs]);
+
+  useEffect(() => {
+    saveStoredUsers(users);
+  }, [users]);
+
+  useEffect(() => {
+    saveStoredCurrentUser(currentUser);
+  }, [currentUser]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -383,13 +407,43 @@ function App() {
     showToast("Work Order Resolved", "Engineering specialist completed maintenance task.", 'success');
   };
 
+  // User Authentication Handlers
+  const handleLoginSuccess = (user) => {
+    setCurrentUser(user);
+    saveStoredCurrentUser(user);
+    showToast(
+      "Welcome to Grand Aurelia",
+      `Signed in as ${user.name} (${user.roleTitle})`,
+      'success'
+    );
+    if (user.type === 'staff') {
+      navigateToPage('frontdesk');
+    } else {
+      navigateToPage('overview');
+    }
+  };
+
+  const handleRegisterUser = (newUser) => {
+    setUsers((prev) => [newUser, ...prev]);
+    saveStoredUsers([newUser, ...users]);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    saveStoredCurrentUser(null);
+    showToast("Signed Out", "You have been logged out of your session.", "info");
+    navigateToPage('overview');
+  };
+
   // Reset to default data
   const handleResetData = () => {
     const data = resetAllHotelData();
     setRooms(data.rooms);
     setReservations(data.reservations);
     setMaintenanceLogs(data.maintenance);
-    showToast("Demo Data Reset", "Restored all default suites, bookings and maintenance logs.", 'info');
+    setUsers(data.users);
+    setCurrentUser(data.currentUser);
+    showToast("Demo Data Reset", "Restored all default suites, bookings, users and maintenance logs.", 'info');
   };
 
   const occupiedCount = rooms.filter((r) => r.status === 'occupied').length;
@@ -410,6 +464,8 @@ function App() {
         onResetData={handleResetData}
         totalRooms={rooms.length}
         occupiedCount={occupiedCount}
+        currentUser={currentUser}
+        onLogout={handleLogout}
       />
 
       {/* Main View Router */}
@@ -486,6 +542,28 @@ function App() {
             rooms={rooms}
             activeInvoiceReservation={activeInvoiceReservation}
             onCloseInvoice={() => setActiveInvoiceReservation(null)}
+          />
+        )}
+
+        {/* 7. Sign In Route */}
+        {currentRoute === 'signin' && (
+          <AuthPage
+            initialMode="signin"
+            onLoginSuccess={handleLoginSuccess}
+            onNavigate={navigateToPage}
+            users={users}
+            onRegisterUser={handleRegisterUser}
+          />
+        )}
+
+        {/* 8. Sign Up / Register Route */}
+        {currentRoute === 'signup' && (
+          <AuthPage
+            initialMode="signup"
+            onLoginSuccess={handleLoginSuccess}
+            onNavigate={navigateToPage}
+            users={users}
+            onRegisterUser={handleRegisterUser}
           />
         )}
       </main>

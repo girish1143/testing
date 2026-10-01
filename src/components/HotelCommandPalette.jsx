@@ -87,6 +87,22 @@ export default function HotelCommandPalette({
       action: () => { onClose(); onNavigate('billing'); }
     },
     {
+      id: 'cmd-signin',
+      type: 'command',
+      title: 'Sign In to Portal / Switch Account',
+      subtitle: 'Access guest portfolio or staff operations console',
+      icon: PlusCircle,
+      action: () => { onClose(); onNavigate('signin'); }
+    },
+    {
+      id: 'cmd-signup',
+      type: 'command',
+      title: 'Join Aurelia Circle (Sign Up)',
+      subtitle: 'Create a new VIP patron or associate profile',
+      icon: PlusCircle,
+      action: () => { onClose(); onNavigate('signup'); }
+    },
+    {
       id: 'cmd-theme',
       type: 'command',
       title: `Switch to ${theme === 'dark' ? 'Light Ivory' : 'Midnight Obsidian'} Theme`,

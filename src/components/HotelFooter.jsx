@@ -75,6 +75,12 @@ export default function HotelFooter({ onNavigate }) {
               <li>
                 <button onClick={() => onNavigate('billing')}>Guest Folio Invoicing Desk</button>
               </li>
+              <li>
+                <button onClick={() => onNavigate('signin')}>Patron & Staff Sign In</button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('signup')}>Join Aurelia VIP Circle (Sign Up)</button>
+              </li>
             </ul>
           </div>
 

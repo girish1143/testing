@@ -709,11 +709,66 @@ export const MAINTENANCE_LOGS = [
   }
 ];
 
+export const DEMO_USERS = [
+  {
+    id: "usr-01",
+    name: "Jean-Luc Moreau",
+    email: "admin@grandaurelia.com",
+    password: "admin123",
+    role: "general_manager",
+    roleTitle: "General Manager",
+    type: "staff",
+    department: "Executive Management",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    phone: "+33 4 93 39 00 01"
+  },
+  {
+    id: "usr-02",
+    name: "Valerie Laurent",
+    email: "frontdesk@grandaurelia.com",
+    password: "desk123",
+    role: "front_desk",
+    roleTitle: "Front Desk Supervisor",
+    type: "staff",
+    department: "Front Desk Operations",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+    phone: "+33 4 93 39 00 22"
+  },
+  {
+    id: "usr-03",
+    name: "Countess Sofia De Luca",
+    email: "sofia.deluca@palazzoluxury.eu",
+    password: "patron123",
+    role: "vip_patron",
+    roleTitle: "Diamond Imperial VIP",
+    type: "guest",
+    membershipTier: "Diamond Imperial",
+    activeRoom: "401",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
+    phone: "+39 06 698 12345"
+  },
+  {
+    id: "usr-04",
+    name: "Marcus Vance",
+    email: "marcus.vance@techcorp.io",
+    password: "guest123",
+    role: "vip_patron",
+    roleTitle: "Sapphire Club Member",
+    type: "guest",
+    membershipTier: "Sapphire Club",
+    activeRoom: "102",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    phone: "+1 (415) 890-3321"
+  }
+];
+
 // LocalStorage helpers to allow stateful actions (booking rooms, checking in/out, changing status)
 const STORAGE_KEYS = {
   ROOMS: "grand_aurelia_rooms_v1",
   RESERVATIONS: "grand_aurelia_reservations_v1",
   MAINTENANCE: "grand_aurelia_maintenance_v1",
+  USERS: "grand_aurelia_users_v1",
+  CURRENT_USER: "grand_aurelia_current_user_v1",
 };
 
 export const getStoredRooms = () => {
@@ -770,13 +825,57 @@ export const saveStoredMaintenance = (logs) => {
   }
 };
 
+export const getStoredUsers = () => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.USERS);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {
+    console.error("Error reading users from storage", e);
+  }
+  return DEMO_USERS;
+};
+
+export const saveStoredUsers = (users) => {
+  try {
+    localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+  } catch (e) {
+    console.error("Error saving users", e);
+  }
+};
+
+export const getStoredCurrentUser = () => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {
+    console.error("Error reading current user from storage", e);
+  }
+  return DEMO_USERS[0]; // Default logged-in as General Manager for showcase ease
+};
+
+export const saveStoredCurrentUser = (user) => {
+  try {
+    if (user) {
+      localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user));
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+    }
+  } catch (e) {
+    console.error("Error saving current user", e);
+  }
+};
+
 export const resetAllHotelData = () => {
   localStorage.removeItem(STORAGE_KEYS.ROOMS);
   localStorage.removeItem(STORAGE_KEYS.RESERVATIONS);
   localStorage.removeItem(STORAGE_KEYS.MAINTENANCE);
+  localStorage.removeItem(STORAGE_KEYS.USERS);
+  localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
   return {
     rooms: INITIAL_ROOMS,
     reservations: INITIAL_RESERVATIONS,
-    maintenance: MAINTENANCE_LOGS
+    maintenance: MAINTENANCE_LOGS,
+    users: DEMO_USERS,
+    currentUser: DEMO_USERS[0]
   };
 };

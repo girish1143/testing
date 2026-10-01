@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Hotel, 
   BedDouble, 
@@ -12,7 +12,13 @@ import {
   Menu, 
   X, 
   PlusCircle,
-  RotateCcw
+  RotateCcw,
+  LogIn,
+  User,
+  LogOut,
+  ChevronDown,
+  Crown,
+  Briefcase
 } from 'lucide-react';
 import './HotelNavbar.css';
 
@@ -25,9 +31,24 @@ export default function HotelNavbar({
   onOpenBookingModal,
   onResetData,
   totalRooms,
-  occupiedCount
+  occupiedCount,
+  currentUser,
+  onLogout
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setUserDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const navLinks = [
     { id: 'overview', label: 'Overview', icon: Hotel },
@@ -113,6 +134,119 @@ export default function HotelNavbar({
             <RotateCcw size={15} />
           </button>
 
+          {/* User Profile or Sign In / Sign Up */}
+          {currentUser ? (
+            <div className="user-profile-menu-container" ref={dropdownRef}>
+              <button
+                className="user-profile-btn"
+                onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                aria-expanded={userDropdownOpen}
+                title={`Signed in as ${currentUser.name}`}
+              >
+                <img 
+                  src={currentUser.avatar} 
+                  alt={currentUser.name} 
+                  className="user-nav-avatar"
+                />
+                <div className="user-nav-info">
+                  <span className="user-nav-name">{currentUser.name.split(' ')[0]}</span>
+                  <span className={`user-nav-role-badge ${currentUser.type}`}>
+                    {currentUser.type === 'staff' ? 'Staff' : 'VIP'}
+                  </span>
+                </div>
+                <ChevronDown size={14} className={`dropdown-chevron ${userDropdownOpen ? 'open' : ''}`} />
+              </button>
+
+              {/* User Dropdown Menu */}
+              {userDropdownOpen && (
+                <div className="user-dropdown-card">
+                  <div className="dropdown-user-header">
+                    <img src={currentUser.avatar} alt={currentUser.name} className="dropdown-avatar-lg" />
+                    <div className="dropdown-user-meta">
+                      <strong>{currentUser.name}</strong>
+                      <span className="dropdown-email">{currentUser.email}</span>
+                      <span className="dropdown-role-title">
+                        {currentUser.type === 'staff' ? <Briefcase size={12} /> : <Crown size={12} />}
+                        {currentUser.roleTitle}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="dropdown-divider" />
+
+                  <div className="dropdown-links-list">
+                    <button 
+                      className="dropdown-item-btn"
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        onNavigate('billing');
+                      }}
+                    >
+                      <ReceiptText size={16} />
+                      <span>My Guest Folio & Invoices</span>
+                    </button>
+
+                    {currentUser.type === 'staff' && (
+                      <button 
+                        className="dropdown-item-btn"
+                        onClick={() => {
+                          setUserDropdownOpen(false);
+                          onNavigate('frontdesk');
+                        }}
+                      >
+                        <LayoutDashboard size={16} />
+                        <span>Front Desk Operations</span>
+                      </button>
+                    )}
+
+                    <button 
+                      className="dropdown-item-btn"
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        onNavigate('rooms');
+                      }}
+                    >
+                      <BedDouble size={16} />
+                      <span>Explore Luxury Suites</span>
+                    </button>
+                  </div>
+
+                  <div className="dropdown-divider" />
+
+                  <div className="dropdown-footer">
+                    <button 
+                      className="dropdown-signout-btn"
+                      onClick={() => {
+                        setUserDropdownOpen(false);
+                        onLogout();
+                      }}
+                    >
+                      <LogOut size={15} />
+                      <span>Sign Out</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="auth-nav-buttons">
+              <button 
+                className="btn-signin-ghost"
+                onClick={() => handleNavClick('signin')}
+              >
+                <LogIn size={15} />
+                <span>Sign In</span>
+              </button>
+
+              <button 
+                className="btn-signup-pill"
+                onClick={() => handleNavClick('signup')}
+              >
+                <span>Join Circle</span>
+              </button>
+            </div>
+          )}
+
           {/* Book Room Primary CTA */}
           <button 
             className="btn-book-primary" 
@@ -137,6 +271,36 @@ export default function HotelNavbar({
       {mobileMenuOpen && (
         <div className="hotel-mobile-drawer">
           <div className="mobile-drawer-inner">
+            {/* User profile on mobile */}
+            {currentUser ? (
+              <div className="mobile-user-card">
+                <img src={currentUser.avatar} alt={currentUser.name} className="user-nav-avatar" />
+                <div className="mobile-user-text">
+                  <strong>{currentUser.name}</strong>
+                  <span>{currentUser.roleTitle} ({currentUser.type === 'staff' ? 'Staff' : 'VIP'})</span>
+                </div>
+                <button className="mobile-signout-btn" onClick={onLogout} title="Sign Out">
+                  <LogOut size={16} />
+                </button>
+              </div>
+            ) : (
+              <div className="mobile-auth-row">
+                <button 
+                  className="btn-signin-ghost w-full"
+                  onClick={() => handleNavClick('signin')}
+                >
+                  <LogIn size={15} />
+                  <span>Sign In</span>
+                </button>
+                <button 
+                  className="btn-signup-pill w-full"
+                  onClick={() => handleNavClick('signup')}
+                >
+                  <span>Join VIP Circle</span>
+                </button>
+              </div>
+            )}
+
             <nav className="mobile-nav-links">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -154,6 +318,7 @@ export default function HotelNavbar({
                 );
               })}
             </nav>
+
             <div className="mobile-drawer-footer">
               <button 
                 className="btn-book-primary w-full"

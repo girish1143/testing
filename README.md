@@ -36,18 +36,52 @@ A luxury Hotel Management & Guest Operations Platform built with **React 19**, *
 - **Financial Analytics**: Gross revenue, Average Daily Rate (ADR), room charges vs. culinary/concierge revenue, and tax calculations.
 - **Official Printable Folio**: Professional, print-ready guest invoices with hotel seal, itemized breakdown, tax computation, and payment status.
 
-### 7. ⌨️ Global Command Palette (`Ctrl + K` / `Cmd + K`)
-- Instant keyboard search across suites, patrons, booking IDs, and operations shortcuts.
+### 7. 🔐 Authentication & Access Control (Sign In & Sign Up)
+- **Dedicated Portals**:
+  - `#/signin`: Sign In page with email/password authentication, show/hide password, and "Remember me" session storage.
+  - `#/signup`: Sign Up page supporting both **VIP Patron / Resident** accounts and **Hotel Associate / Staff** registrations with departmental assignment.
+- **1-Click Instant Demo Accounts**:
+  - 👑 **General Manager** (`admin@grandaurelia.com` / `admin123`)
+  - 🛎️ **Front Desk Supervisor** (`frontdesk@grandaurelia.com` / `desk123`)
+  - 💎 **Countess Sofia De Luca (Diamond VIP)** (`sofia.deluca@palazzoluxury.eu` / `patron123`)
+  - 🌟 **Marcus Vance (Sapphire Club Member)** (`marcus.vance@techcorp.io` / `guest123`)
+- **Interactive User Profile Dropdown**:
+  - Shows logged-in user avatar, full name, role title, and quick links to personal folios, staff operations, or sign-out.
+- **Forgot Password Modal**:
+  - Built-in secure reset token dispatch simulation.
+
+### 8. ⌨️ Global Command Palette (`Ctrl + K` / `Cmd + K`)
+- Instant keyboard search across suites, patrons, booking IDs, authentication actions, and operations shortcuts.
+
+---
+
+## 🍃 MongoDB & Environment Configuration
+
+The application includes a pre-configured [`.env`](file:///c:/giri/sno/.env) file and [`.env.example`](file:///c:/giri/sno/.env.example) template.
+
+### Key Environment Variables:
+- `MONGODB_URI`: Connection string for your MongoDB Atlas Cloud Cluster or local MongoDB instance (`mongodb://localhost:27017/grand_aurelia_hotel`).
+- `MONGODB_DATABASE`: Target MongoDB database name (`grand_aurelia_hotel`).
+- `PORT`: Backend server port (default: `5000`).
+- `JWT_SECRET`: Secret token key used for user session and patron token verification.
+- `VITE_API_BASE_URL`: API gateway endpoint for frontend communication.
+- `VITE_MONGODB_DATABASE`: Database identifier exposed to the Vite frontend client.
 
 ---
 
 ## 🚀 Getting Started
 
 ```bash
-# Install dependencies
+# 1. Clone or navigate to the repository
+cd sno
+
+# 2. Review and configure environment variables
+# (The .env file is already created for you. You can adjust the MONGODB_URI)
+
+# 3. Install dependencies
 npm install
 
-# Start development server
+# 4. Start development server
 npm run dev
 
 # Build for production
