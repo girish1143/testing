@@ -1,0 +1,635 @@
+/* ==============================================================================
+   Aurelia Grand Resort — Home Page Styling
+   ============================================================================== */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 1. HERO SECTION */
+.hero-section {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem 4rem 1.5rem;
+  overflow: hidden;
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(180deg, rgba(7, 9, 14, 0.72) 0%, rgba(7, 9, 14, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=85');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.92);
+  z-index: 0;
+}
+
+.hero-ambient-glow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, rgba(56, 189, 248, 0.08) 50%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prestige-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  background: rgba(212, 175, 55, 0.14);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 9999px;
+  color: #d4af37;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.hero-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-weight: 500;
+  color: #f8fafc;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem 0;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #b89025 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-style: italic;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.6;
+  color: #9aa8bc;
+  max-width: 720px;
+  margin: 0 0 2.5rem 0;
+}
+
+/* Booking Bar */
+.hero-booking-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(13, 18, 28, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  width: 100%;
+  max-width: 860px;
+  margin-bottom: 2rem;
+}
+
+.booking-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #d4af37;
+  margin-bottom: 0.35rem;
+}
+
+.field-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #f8fafc;
+}
+
+.field-input-row svg {
+  color: #9aa8bc;
+  flex-shrink: 0;
+}
+
+.field-input-row input,
+.field-input-row select {
+  background: transparent;
+  border: none;
+  color: #f8fafc;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+}
+
+.field-divider {
+  width: 1px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-search-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.95rem 1.6rem;
+  background: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #9e7a17 100%);
+  color: #07090e;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hero-search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+  filter: brightness(1.06);
+}
+
+/* Badges Row */
+.hero-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.hero-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.84rem;
+  color: #9aa8bc;
+}
+
+.hero-badge-item svg {
+  color: #10b981;
+}
+
+/* 2. ROOMS SECTION */
+.rooms-section {
+  padding: 6rem 1.5rem;
+  background: #07090e;
+  position: relative;
+}
+
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-eyebrow {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #d4af37;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2.1rem, 3.8vw, 3rem);
+  font-weight: 500;
+  color: #f8fafc;
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #9aa8bc;
+  margin: 0 0 2rem 0;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: inline-flex;
+  gap: 0.5rem;
+  background: rgba(18, 24, 38, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.35rem;
+  border-radius: 9999px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-tab {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #9aa8bc;
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-tab:hover {
+  color: #f8fafc;
+}
+
+.category-tab.active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+/* Rooms Grid */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+}
+
+.room-card {
+  background: #0d121c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.room-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+.room-image-wrap {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.room-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.room-card:hover .room-img {
+  transform: scale(1.05);
+}
+
+.room-type-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(7, 9, 14, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+}
+
+.room-rating-pill {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(7, 9, 14, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+}
+
+.room-rating-pill small {
+  color: #9aa8bc;
+}
+
+.room-info {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.room-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #8391a5;
+  margin-bottom: 0.65rem;
+}
+
+.room-view-meta {
+  color: #d4af37;
+  font-weight: 500;
+}
+
+.room-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.2;
+}
+
+.room-description {
+  font-size: 0.88rem;
+  color: #9aa8bc;
+  line-height: 1.55;
+  margin: 0 0 1.25rem 0;
+  flex: 1;
+}
+
+.room-amenities-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.amenity-chip {
+  font-size: 0.74rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #9aa8bc;
+}
+
+.room-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.25rem;
+  margin-top: auto;
+}
+
+.room-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.room-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.room-price-unit {
+  font-size: 0.82rem;
+  color: #8391a5;
+}
+
+.btn-reserve-room {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.25rem;
+  background: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #9e7a17 100%);
+  color: #07090e;
+  font-size: 0.86rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+}
+
+.btn-reserve-room:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(212, 175, 55, 0.4);
+}
+
+/* 3. AMENITIES SECTION */
+.amenities-section {
+  padding: 6rem 1.5rem;
+  background: #090d14;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.amenity-card {
+  background: rgba(18, 24, 38, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 2.25rem 1.75rem;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.amenity-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  background: rgba(18, 24, 38, 0.85);
+  transform: translateY(-4px);
+}
+
+.amenity-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.amenity-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.35rem;
+  color: #f8fafc;
+  margin: 0 0 0.65rem 0;
+}
+
+.amenity-desc {
+  font-size: 0.88rem;
+  color: #9aa8bc;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 4. CTA BANNER */
+.cta-section {
+  padding: 2rem 1.5rem 6rem 1.5rem;
+  background: #090d14;
+}
+
+.cta-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cta-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(18, 24, 38, 0.95), rgba(7, 9, 14, 0.95));
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 24px;
+  padding: 4rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(212, 175, 55, 0.12);
+}
+
+.cta-content {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 500;
+  color: #f8fafc;
+  line-height: 1.2;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.cta-desc {
+  font-size: 0.95rem;
+  color: #9aa8bc;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.75rem;
+  background: linear-gradient(135deg, #f7e096 0%, #d4af37 50%, #9e7a17 100%);
+  color: #07090e;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+}
+
+.btn-cta-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.btn-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 1.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cta-secondary:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #d4af37;
+}
+
+@media (max-width: 768px) {
+  .hero-booking-bar {
+    flex-direction: column;
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+  .field-divider {
+    display: none;
+  }
+  .booking-field {
+    width: 100%;
+    padding: 0;
+  }
+  .hero-search-btn {
+    width: 100%;
+  }
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+}
