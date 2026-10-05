@@ -7,6 +7,7 @@ import Toast from './components/Toast';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import ProfilePage from './pages/ProfilePage';
 
 import { getCurrentUser, authSignOut } from './config/supabaseClient';
 import { HOTEL_ROOMS } from './data/hotelRooms';
@@ -14,11 +15,12 @@ import { HOTEL_ROOMS } from './data/hotelRooms';
 import './App.css';
 
 export default function App() {
-  // Page Route State: 'home' | 'login' | 'signup'
+  // Page Route State: 'home' | 'login' | 'signup' | 'profile'
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash;
     if (hash.startsWith('#/login') || hash.startsWith('#/signin')) return 'login';
     if (hash.startsWith('#/signup') || hash.startsWith('#/register')) return 'signup';
+    if (hash.startsWith('#/profile') || hash.startsWith('#/account')) return 'profile';
     return 'home';
   });
 
@@ -49,6 +51,9 @@ export default function App() {
       } else if (hash.startsWith('#/signup') || hash.startsWith('#/register')) {
         setCurrentPage('signup');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash.startsWith('#/profile') || hash.startsWith('#/account')) {
+        setCurrentPage('profile');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -76,12 +81,12 @@ export default function App() {
   // Auth Handlers
   const handleLoginSuccess = (user) => {
     setCurrentUser(user);
-    navigateTo('home');
+    navigateTo('profile');
   };
 
   const handleSignUpSuccess = (user) => {
     setCurrentUser(user);
-    navigateTo('home');
+    navigateTo('profile');
   };
 
   const handleSignOut = async () => {
@@ -105,7 +110,7 @@ export default function App() {
         onBookClick={() => handleOpenBooking(null)}
       />
 
-      {/* Main Page Content (3 Pages Only) */}
+      {/* Main Page Content */}
       <main className="app-main-content">
         {/* Page 1: Home Page */}
         {currentPage === 'home' && (
@@ -130,6 +135,18 @@ export default function App() {
             onSignUpSuccess={handleSignUpSuccess}
             onNavigate={navigateTo}
             showToast={showToast}
+          />
+        )}
+
+        {/* Page 4: User Profile Page */}
+        {currentPage === 'profile' && (
+          <ProfilePage
+            currentUser={currentUser}
+            onNavigate={navigateTo}
+            showToast={showToast}
+            onBookRoom={handleOpenBooking}
+            onSignOut={handleSignOut}
+            onLoginSuccess={handleLoginSuccess}
           />
         )}
       </main>

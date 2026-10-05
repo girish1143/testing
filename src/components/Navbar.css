@@ -188,18 +188,38 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.45rem 0.95rem;
   background: rgba(212, 175, 55, 0.12);
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 9999px;
   color: #d4af37;
   font-size: 0.85rem;
   font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.user-pill.interactive-pill {
+  cursor: pointer;
+}
+
+.user-pill.interactive-pill:hover,
+.user-pill.active-pill {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #d4af37;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.user-pill.active-pill .user-icon,
+.user-pill.interactive-pill:hover .user-icon {
+  color: #f7e096;
 }
 
 .user-icon {
   color: #d4af37;
 }
+
 
 .btn-signout {
   display: inline-flex;
