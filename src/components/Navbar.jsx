@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Crown, User, LogIn, LogOut, Menu, X, CalendarCheck } from 'lucide-react';
+import { Crown, User, LogIn, LogOut, Menu, X, CalendarCheck, ShieldCheck } from 'lucide-react';
 import './Navbar.css';
 
-export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut, onBookClick }) {
+export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut, onBookClick, hotelInfo }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (page) => {
@@ -19,7 +19,7 @@ export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut
             <Crown size={20} />
           </div>
           <div className="brand-titles">
-            <span className="brand-name">AURELIA GRAND</span>
+            <span className="brand-name">{hotelInfo?.name ? hotelInfo.name.toUpperCase() : 'AURELIA GRAND'}</span>
             <span className="brand-sub">RESORT & SPA</span>
           </div>
         </div>
@@ -47,16 +47,35 @@ export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut
           >
             <span>Suites & Villas</span>
           </a>
+          <button
+            className={`nav-link-btn ${currentPage === 'profile' ? 'active' : ''}`}
+            onClick={() => handleNav('profile')}
+          >
+            <span>{currentUser ? 'Patron Profile' : 'Patron Portal'}</span>
+          </button>
+          <button
+            className={`nav-link-btn ${currentPage === 'admin' ? 'active' : ''}`}
+            onClick={() => handleNav('admin')}
+            title="Hotel Operations & Executive Admin Panel"
+            style={{ color: currentPage === 'admin' ? '#d4af37' : '#e5c365' }}
+          >
+            <ShieldCheck size={14} style={{ marginRight: '4px', verticalAlign: '-2px' }} />
+            <span>Admin Panel</span>
+          </button>
         </nav>
 
         {/* Auth & CTA Actions */}
         <div className="nav-actions">
           {currentUser ? (
             <div className="user-logged-box">
-              <div className="user-pill">
+              <button
+                className={`user-pill interactive-pill ${currentPage === 'profile' ? 'active-pill' : ''}`}
+                onClick={() => handleNav('profile')}
+                title="View your Guest Folio, Stays & Loyalty Tier"
+              >
                 <User size={14} className="user-icon" />
                 <span className="user-name">{currentUser.name}</span>
-              </div>
+              </button>
               <button
                 className="btn-signout"
                 onClick={onSignOut}
@@ -116,16 +135,33 @@ export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut
           >
             Suites & Villas
           </a>
+          <button
+            className={`mobile-link ${currentPage === 'profile' ? 'active' : ''}`}
+            onClick={() => handleNav('profile')}
+          >
+            {currentUser ? 'Patron Profile & Stays' : 'Patron Portal'}
+          </button>
+          <button
+            className={`mobile-link ${currentPage === 'admin' ? 'active' : ''}`}
+            onClick={() => handleNav('admin')}
+            style={{ color: '#e5c365' }}
+          >
+            🛡️ Admin Panel
+          </button>
 
           <div className="mobile-divider" />
 
           {currentUser ? (
             <div className="mobile-user-actions">
-              <div className="user-pill" style={{ width: '100%', justifyContent: 'center' }}>
+              <button
+                className="user-pill interactive-pill"
+                style={{ width: '100%', justifyContent: 'center' }}
+                onClick={() => handleNav('profile')}
+              >
                 <User size={15} />
-                <span>{currentUser.name}</span>
-              </div>
-              <button className="btn-signout" style={{ width: '100%' }} onClick={onSignOut}>
+                <span>{currentUser.name} (Folio)</span>
+              </button>
+              <button className="btn-signout" style={{ width: '100%', justifyContent: 'center' }} onClick={onSignOut}>
                 <LogOut size={14} />
                 <span>Sign Out</span>
               </button>

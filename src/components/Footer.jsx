@@ -34,8 +34,10 @@ export default function Footer({ onNavigate }) {
           <ul className="footer-links">
             <li><button onClick={() => onNavigate('home')}>Home Sanctuary</button></li>
             <li><a href="#rooms-section" onClick={() => onNavigate('home')}>Suites & Villas</a></li>
+            <li><button onClick={() => onNavigate('profile')}>Patron Profile & Stays</button></li>
             <li><button onClick={() => onNavigate('login')}>Patron Sign In</button></li>
             <li><button onClick={() => onNavigate('signup')}>Create Account</button></li>
+            <li><button onClick={() => onNavigate('admin')} style={{ color: '#d4af37' }}>🛡️ Admin Operations</button></li>
           </ul>
         </div>
 
