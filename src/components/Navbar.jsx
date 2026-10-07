@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Crown, User, LogIn, LogOut, Menu, X, CalendarCheck } from 'lucide-react';
+import { Crown, User, LogIn, LogOut, Menu, X, CalendarCheck, ShieldCheck } from 'lucide-react';
 import './Navbar.css';
 
-export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut, onBookClick }) {
+export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut, onBookClick, hotelInfo }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (page) => {
@@ -19,7 +19,7 @@ export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut
             <Crown size={20} />
           </div>
           <div className="brand-titles">
-            <span className="brand-name">AURELIA GRAND</span>
+            <span className="brand-name">{hotelInfo?.name ? hotelInfo.name.toUpperCase() : 'AURELIA GRAND'}</span>
             <span className="brand-sub">RESORT & SPA</span>
           </div>
         </div>
@@ -52,6 +52,15 @@ export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut
             onClick={() => handleNav('profile')}
           >
             <span>{currentUser ? 'Patron Profile' : 'Patron Portal'}</span>
+          </button>
+          <button
+            className={`nav-link-btn ${currentPage === 'admin' ? 'active' : ''}`}
+            onClick={() => handleNav('admin')}
+            title="Hotel Operations & Executive Admin Panel"
+            style={{ color: currentPage === 'admin' ? '#d4af37' : '#e5c365' }}
+          >
+            <ShieldCheck size={14} style={{ marginRight: '4px', verticalAlign: '-2px' }} />
+            <span>Admin Panel</span>
           </button>
         </nav>
 
@@ -131,6 +140,13 @@ export default function Navbar({ currentPage, onNavigate, currentUser, onSignOut
             onClick={() => handleNav('profile')}
           >
             {currentUser ? 'Patron Profile & Stays' : 'Patron Portal'}
+          </button>
+          <button
+            className={`mobile-link ${currentPage === 'admin' ? 'active' : ''}`}
+            onClick={() => handleNav('admin')}
+            style={{ color: '#e5c365' }}
+          >
+            🛡️ Admin Panel
           </button>
 
           <div className="mobile-divider" />

@@ -37,6 +37,7 @@ export default function Footer({ onNavigate }) {
             <li><button onClick={() => onNavigate('profile')}>Patron Profile & Stays</button></li>
             <li><button onClick={() => onNavigate('login')}>Patron Sign In</button></li>
             <li><button onClick={() => onNavigate('signup')}>Create Account</button></li>
+            <li><button onClick={() => onNavigate('admin')} style={{ color: '#d4af37' }}>🛡️ Admin Operations</button></li>
           </ul>
         </div>
 

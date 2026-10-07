@@ -8,21 +8,33 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
+import AdminPage from './pages/AdminPage';
 
 import { getCurrentUser, authSignOut } from './config/supabaseClient';
-import { HOTEL_ROOMS } from './data/hotelRooms';
+import {
+  getStoredHotelInfo,
+  saveHotelInfo,
+  getStoredRooms,
+  saveRooms,
+  resetHotelData
+} from './data/hotelManager';
 
 import './App.css';
 
 export default function App() {
-  // Page Route State: 'home' | 'login' | 'signup' | 'profile'
+  // Page Route State: 'home' | 'login' | 'signup' | 'profile' | 'admin'
   const [currentPage, setCurrentPage] = useState(() => {
     const hash = window.location.hash;
     if (hash.startsWith('#/login') || hash.startsWith('#/signin')) return 'login';
     if (hash.startsWith('#/signup') || hash.startsWith('#/register')) return 'signup';
     if (hash.startsWith('#/profile') || hash.startsWith('#/account')) return 'profile';
+    if (hash.startsWith('#/admin') || hash.startsWith('#/manage')) return 'admin';
     return 'home';
   });
+
+  // Dynamic Resort and Rooms State (managed live by Admin)
+  const [hotelInfo, setHotelInfo] = useState(() => getStoredHotelInfo());
+  const [rooms, setRooms] = useState(() => getStoredRooms());
 
   // Current authenticated user
   const [currentUser, setCurrentUser] = useState(() => getCurrentUser());
@@ -54,6 +66,9 @@ export default function App() {
       } else if (hash.startsWith('#/profile') || hash.startsWith('#/account')) {
         setCurrentPage('profile');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash.startsWith('#/admin') || hash.startsWith('#/manage')) {
+        setCurrentPage('admin');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         setCurrentPage('home');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -74,8 +89,25 @@ export default function App() {
 
   // Open booking modal for a specific room or default room
   const handleOpenBooking = (room = null) => {
-    setSelectedRoomForBooking(room || HOTEL_ROOMS[0]);
+    setSelectedRoomForBooking(room || (rooms.length > 0 ? rooms[0] : null));
     setIsBookingModalOpen(true);
+  };
+
+  // Admin Data Updaters
+  const handleUpdateHotelInfo = (newInfo) => {
+    const saved = saveHotelInfo(newInfo);
+    setHotelInfo(saved);
+  };
+
+  const handleUpdateRooms = (newRooms) => {
+    const saved = saveRooms(newRooms);
+    setRooms(saved);
+  };
+
+  const handleResetDefaults = () => {
+    const reset = resetHotelData();
+    setHotelInfo(reset.info);
+    setRooms(reset.rooms);
   };
 
   // Auth Handlers
@@ -108,6 +140,7 @@ export default function App() {
         currentUser={currentUser}
         onSignOut={handleSignOut}
         onBookClick={() => handleOpenBooking(null)}
+        hotelInfo={hotelInfo}
       />
 
       {/* Main Page Content */}
@@ -117,6 +150,8 @@ export default function App() {
           <HomePage
             onBookRoom={handleOpenBooking}
             onNavigate={navigateTo}
+            rooms={rooms}
+            hotelInfo={hotelInfo}
           />
         )}
 
@@ -149,13 +184,26 @@ export default function App() {
             onLoginSuccess={handleLoginSuccess}
           />
         )}
+
+        {/* Page 5: Executive Operations Admin Panel */}
+        {currentPage === 'admin' && (
+          <AdminPage
+            hotelInfo={hotelInfo}
+            onUpdateHotelInfo={handleUpdateHotelInfo}
+            rooms={rooms}
+            onUpdateRooms={handleUpdateRooms}
+            onResetDefaults={handleResetDefaults}
+            onNavigate={navigateTo}
+            showToast={showToast}
+          />
+        )}
       </main>
 
       {/* Footer */}
       <Footer onNavigate={navigateTo} />
 
       {/* Booking Modal */}
-      {isBookingModalOpen && (
+      {isBookingModalOpen && selectedRoomForBooking && (
         <BookingModal
           room={selectedRoomForBooking}
           isOpen={isBookingModalOpen}

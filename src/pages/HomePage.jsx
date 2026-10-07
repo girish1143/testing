@@ -15,7 +15,7 @@ import {
 import { HOTEL_ROOMS, HOTEL_AMENITIES } from '../data/hotelRooms';
 import './HomePage.css';
 
-export default function HomePage({ onBookRoom, onNavigate }) {
+export default function HomePage({ onBookRoom, onNavigate, rooms = HOTEL_ROOMS, hotelInfo }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchGuests, setSearchGuests] = useState('2');
   const [searchCheckIn, setSearchCheckIn] = useState(
@@ -25,7 +25,9 @@ export default function HomePage({ onBookRoom, onNavigate }) {
     new Date(Date.now() + 86400000 * 2).toISOString().split('T')[0]
   );
 
-  const filteredRooms = HOTEL_ROOMS.filter((room) => {
+  const activeRoomsList = rooms && rooms.length > 0 ? rooms : HOTEL_ROOMS;
+
+  const filteredRooms = activeRoomsList.filter((room) => {
     if (selectedCategory === 'all') return true;
     return room.category === selectedCategory;
   });
@@ -48,16 +50,19 @@ export default function HomePage({ onBookRoom, onNavigate }) {
         <div className="hero-content">
           <div className="prestige-tag">
             <Sparkles size={14} />
-            <span>Condé Nast Gold List • Rated 4.96/5 Stars</span>
+            <span>Condé Nast Gold List • Rated {hotelInfo?.rating || 4.96}/5 Stars ({hotelInfo?.reviewsCount || 1420} Reviews)</span>
           </div>
 
           <h1 className="hero-title">
-            Where Sapphire Oceans Meet <span className="gold-text">Imperial Luxury</span>
+            {hotelInfo?.name ? (
+              <>Welcome to <span className="gold-text">{hotelInfo.name}</span></>
+            ) : (
+              <>Where Sapphire Oceans Meet <span className="gold-text">Imperial Luxury</span></>
+            )}
           </h1>
 
           <p className="hero-subtitle">
-            Immerse yourself in bespoke European hospitality along the private azure coastline.
-            Panoramic oceanfront suites, private heated plunge villas, and world-class culinary masteries.
+            {hotelInfo?.tagline || 'Immerse yourself in bespoke European hospitality along the private azure coastline. Panoramic oceanfront suites, private heated plunge villas, and world-class culinary masteries.'}
           </p>
 
           {/* Booking Search Bar */}
@@ -149,7 +154,7 @@ export default function HomePage({ onBookRoom, onNavigate }) {
                 className={`category-tab ${selectedCategory === 'all' ? 'active' : ''}`}
                 onClick={() => setSelectedCategory('all')}
               >
-                All Residences ({HOTEL_ROOMS.length})
+                All Residences ({activeRoomsList.length})
               </button>
               <button
                 className={`category-tab ${selectedCategory === 'deluxe' ? 'active' : ''}`}
